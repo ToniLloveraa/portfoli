@@ -1,12 +1,11 @@
-// ✏️ EDITA SOLO ESTE ARCHIVO: aquí está todo tu contenido.
 const SITE = {
-  name: "Tu Nombre",
+  name: "Toni Llovera",
   role: "Gameplay Programmer",
   intro: "Programo sistemas de juego, herramientas y mecánicas basadas en físicas.",
-  cv: "assets/CV.pdf",            // pon tu PDF en la carpeta assets/
-  photo: "",                      // ej: "assets/pfp.png" (vacío = iniciales)
-  github: "https://github.com/tuusuario",
-  linkedin: "https://www.linkedin.com/in/tuusuario",
+  cv: "assets/CV.pdf",
+  photo: "",
+  github: "https://github.com/ToniLloveraa",
+  linkedin: "https://www.linkedin.com/in/tonilloveraroca/",
   repo: "https://github.com/tuusuario/portfolio", // para STAR / FORK (vacío = oculto)
 
   stats: [
@@ -43,25 +42,25 @@ const SITE = {
 
   projects: [
     {
-      slug: "mi-proyecto-1",
-      title: "Mi Proyecto 1",
+      slug: "Son-Of-Ithaca",
+      title: "Son Of Ithaca",
       summary: "Action RPG de exploración y puzles. Liderazgo técnico y desarrollo de herramientas.",
       tags: ["Lead Programmer", "Motor propio"],
       description: "Aquí va la descripción larga del proyecto: qué hiciste, qué retos técnicos tuvo y qué aprendiste.",
       highlights: ["Sistema de combate", "Editor de niveles", "Flujo de trabajo del equipo"],
       links: [{ label: "GitHub", url: "https://github.com/tuusuario" }, { label: "itch.io", url: "https://itch.io" }],
-      video: "",                  // ej: "https://www.youtube.com/embed/XXXXXXXXXXX"
+      video: "https://www.youtube.com/watch?v=PYzuc0fsHpM",                  // ej: "https://www.youtube.com/embed/XXXXXXXXXXX"
       images: []                  // ej: ["assets/p1-1.png", "assets/p1-2.png"]
     },
     {
-      slug: "mi-proyecto-2",
-      title: "Mi Proyecto 2",
+      slug: "Estik",
+      title: "Estik",
       summary: "Cooperativo de puzles y plataformas con físicas soft-body.",
       tags: ["Unity", "C#"],
       description: "Descripción larga del segundo proyecto.",
       highlights: [],
       links: [],
-      video: "",
+      video: "https://www.youtube.com/watch?v=aGGM1yTLy6A",
       images: []
     }
   ]
