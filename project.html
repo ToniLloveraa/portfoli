@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Proyecto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="wrap"><a class="brand" href="index.html" id="brand"></a>
+  <nav><a href="index.html#projects">Projects</a></nav></div></header>
+<main class="wrap"><article class="project" id="project"></article></main>
+<script src="data.js"></script>
+<script>
+function el(tag, props = {}, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(props)) k === "class" ? n.className = v : n.setAttribute(k, v);
+  kids.forEach(k => n.append(k));
+  return n;
+}
+document.getElementById("brand").textContent = SITE.name;
+const slug = new URLSearchParams(location.search).get("p");
+const p = SITE.projects.find(x => x.slug === slug);
+const root = document.getElementById("project");
+root.append(el("a", {class:"back", href:"index.html#projects"}, "← Volver a proyectos"));
+if (!p) {
+  root.append(el("h1", {}, "Proyecto no encontrado"));
+} else {
+  document.title = `${p.title} | ${SITE.name}`;
+  root.append(el("h1", {}, p.title), el("p", {class:"lead"}, p.summary),
+    el("div", {class:"tags", style:"margin-top:1rem"}, ...p.tags.map(t => el("span", {class:"tag"}, t))),
+    el("h2", {}, "Sobre el proyecto"), el("p", {style:"color:var(--muted)"}, p.description));
+  if (p.highlights?.length) root.append(el("h2", {}, "Mi trabajo"), el("ul", {}, ...p.highlights.map(h => el("li", {}, h))));
+  if (p.links?.length) root.append(el("div", {class:"btns"}, ...p.links.map(l => el("a", {class:"btn", href:l.url, target:"_blank", rel:"noopener"}, l.label))));
+  const media = el("div", {class:"media"});
+  if (p.video) media.append(el("iframe", {src:p.video, title:p.title, allowfullscreen:"", loading:"lazy"}));
+  (p.images || []).forEach(src => media.append(el("img", {src, alt:p.title, loading:"lazy"})));
+  if (media.children.length) root.append(media);
+}
+</script>
+</body>
+</html>

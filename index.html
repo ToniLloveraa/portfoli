@@ -1,395 +1,110 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Toni's portfolio: game programmer working on engines, UI and gameplay.">
-<title>Toni · Game Programmer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,400..800;125,700..900&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<style>
-/* Layout: plano cianotipo. Columna lateral fija con nombre, navegación e idioma; a la derecha, secciones separadas por líneas de dibujo técnico, con una frase gigante como protagonista y un cajetín de plano como pie. */
-:root {
-  color-scheme: dark;
-  --bg: #1237CF;
-  --bg-deep: #0D2AA8;
-  --fg: #F3F7FF;
-  --muted: #BCCBFA;
-  --line: rgba(243, 247, 255, 0.28);
-  --line-soft: rgba(243, 247, 255, 0.12);
-  --accent: #8EE7FF;
-  --accent-ink: #0A1F85;
-  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --font-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: auto; }
-@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-body {
-  margin: 0;
-  background-color: var(--bg);
-  background-image:
-    linear-gradient(var(--line-soft) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-  background-size: 48px 48px;
-  color: var(--fg);
-  font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.65;
-}
-a { color: var(--accent); }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-::selection { background: var(--accent); color: var(--accent-ink); }
-
-.mono { font-family: var(--font-mono); }
-.label {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-/* Estructura */
-.shell {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
-
-/* Columna lateral */
-.rail {
-  position: sticky;
-  top: 0;
-  align-self: start;
-  height: 100vh;
-  height: 100svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 32px;
-  padding-block: 40px;
-  padding-right: 32px;
-  border-right: 1px solid var(--line);
-}
-.brand { font-family: var(--font-display); font-stretch: 125%; font-weight: 900; font-size: 2.6rem; letter-spacing: -0.04em; line-height: 1; color: var(--fg); text-decoration: none; }
-.rail .tagline { margin: 10px 0 0; font-size: 14px; color: var(--muted); }
-.rail nav { display: flex; flex-direction: column; gap: 2px; }
-.rail nav a {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 1.1rem;
-  color: var(--muted);
-  text-decoration: none;
-  padding: 6px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--line-soft);
-}
-.rail nav a::after { content: "→"; opacity: 0; font-family: var(--font-mono); }
-.rail nav a:hover, .rail nav a[aria-current="true"] { color: var(--fg); }
-.rail nav a:hover::after, .rail nav a[aria-current="true"]::after { opacity: 1; color: var(--accent); }
-.lang { display: inline-flex; align-self: flex-start; border: 1px solid var(--line); }
-.lang button { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: var(--muted); background: transparent; border: 0; padding: 6px 12px; cursor: pointer; }
-.lang button:hover { color: var(--fg); }
-.lang button[aria-pressed="true"] { background: var(--fg); color: var(--accent-ink); }
-
-/* Contenido */
-.content { min-width: 0; padding-left: clamp(24px, 5vw, 64px); }
-.content > section { padding-block: 96px; border-top: 1px solid var(--line); scroll-margin-top: 0; }
-.content > section:first-child { border-top: 0; padding-top: 72px; }
-.sec-label { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
-.sec-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
-
-/* Portada */
-.hero .label { display: block; margin-bottom: 28px; }
-h1 {
-  font-family: var(--font-display);
-  font-stretch: 125%;
-  font-weight: 800;
-  font-size: clamp(2.3rem, 7.4vw, 5.6rem);
-  line-height: 0.98;
-  letter-spacing: -0.035em;
-  margin: 0;
-  text-wrap: balance;
-  overflow-wrap: anywhere;
-}
-.dim { position: relative; margin: 40px 0 28px; border-top: 1px solid var(--fg); max-width: 640px; }
-.dim::before, .dim::after { content: ""; position: absolute; top: -6px; width: 1px; height: 11px; background: var(--fg); }
-.dim::before { left: 0; }
-.dim::after { right: 0; }
-.dim span { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: var(--bg); padding: 0 12px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
-.intro { max-width: 52ch; margin: 0 0 32px; font-size: 1.15rem; color: var(--muted); }
-.links { display: flex; flex-wrap: wrap; gap: 12px 32px; }
-.links a { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; color: var(--fg); text-decoration: none; border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
-.links a:hover { color: var(--accent); }
-
-/* Sobre mí */
-.lead { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1.3; letter-spacing: -0.02em; margin: 0 0 24px; max-width: 30ch; text-wrap: balance; }
-.about-p { max-width: 58ch; margin: 0 0 40px; color: var(--muted); }
-.table { margin: 0; border-top: 1px solid var(--line); }
-.table > div { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 8px 24px; padding-block: 14px; border-bottom: 1px solid var(--line); }
-.table dt { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
-.table dd { margin: 0; }
-.award { margin-top: 40px; display: inline-flex; flex-direction: column; gap: 2px; border: 1px solid var(--accent); padding: 14px 20px; }
-.award strong { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--accent); }
-.award span { font-size: 15px; color: var(--muted); }
-
-/* Skills */
-.spec { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
-.spec > li { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 8px 24px; padding-block: 20px; border-bottom: 1px solid var(--line); }
-.spec .cat { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding-top: 8px; }
-.items { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px 0; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.3rem, 3.2vw, 2rem); letter-spacing: -0.02em; line-height: 1.25; }
-.items li { display: inline-flex; align-items: baseline; gap: 8px; }
-.items li:not(:last-child)::after { content: "/"; color: var(--accent); font-weight: 400; margin-inline: 14px; }
-.items .note { font-family: var(--font-mono); font-weight: 400; font-size: 12px; letter-spacing: 0.04em; color: var(--muted); }
-.items .note::before { content: "("; }
-.items .note::after { content: ")"; }
-
-/* Proyectos */
-.empty { border: 1px dashed var(--line); padding: 48px 24px; display: flex; flex-direction: column; gap: 10px; }
-.empty strong { font-family: var(--font-display); font-stretch: 125%; font-weight: 800; font-size: clamp(1.4rem, 3.4vw, 2.2rem); letter-spacing: -0.02em; line-height: 1.1; }
-.empty p { margin: 0; color: var(--muted); }
-
-/* Contacto */
-.contact-h { font-family: var(--font-display); font-stretch: 125%; font-weight: 800; font-size: clamp(1.8rem, 5vw, 3.4rem); line-height: 1.02; letter-spacing: -0.03em; margin: 0 0 20px; max-width: 16ch; text-wrap: balance; }
-.contact-p { margin: 0 0 40px; max-width: 50ch; color: var(--muted); }
-.rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-.rows li { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 4px 24px; align-items: baseline; padding-block: 16px; border-bottom: 1px solid var(--line); }
-.rows .where { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-.rows .value { font-family: var(--font-display); font-weight: 600; font-size: 1.3rem; letter-spacing: -0.01em; color: var(--muted); overflow-wrap: anywhere; }
-
-/* Cajetín de plano */
-footer { border-top: 1px solid var(--line); padding-block: 40px 56px; }
-.titleblock { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); border: 1px solid var(--fg); max-width: 720px; margin: 0; }
-.titleblock > div { padding: 10px 14px; border-right: 1px solid var(--line); min-width: 0; }
-.titleblock > div:last-child { border-right: 0; }
-.titleblock dt { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-.titleblock dd { margin: 2px 0 0; font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; overflow-wrap: anywhere; }
-
-@media (max-width: 860px) {
-  .shell { grid-template-columns: minmax(0, 1fr); }
-  .rail { position: static; height: auto; padding-block: 24px; padding-right: 0; border-right: 0; border-bottom: 1px solid var(--line); gap: 20px; }
-  .rail nav { flex-direction: row; flex-wrap: wrap; gap: 4px 20px; }
-  .rail nav a { border-bottom: 0; font-size: 1rem; }
-  .rail nav a::after { display: none; }
-  .content { padding-left: 0; }
-  .content > section { padding-block: 64px; }
-  .content > section:first-child { padding-top: 48px; }
-  .table > div, .spec > li, .rows li { grid-template-columns: minmax(0, 1fr); }
-  .spec .cat { padding-top: 0; }
-  .dim span { font-size: 11px; }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .lang button, .links a, .rail nav a { transition: color 0.15s, background-color 0.15s; }
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="shell">
+<header><div class="wrap">
+  <a class="brand" href="#home" id="brand"></a>
+  <nav>
+    <a href="#home">Home</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
+  </nav>
+  <div class="icons" id="icons"></div>
+</div></header>
 
-  <aside class="rail">
+<main>
+<div class="wrap" id="home">
+  <div class="hero">
     <div>
-      <a class="brand" href="#home">Toni</a>
-      <p class="tagline" data-i18n="tagline">Game programmer</p>
+      <p class="hi">Hi, I'm</p>
+      <h1 id="name"></h1>
+      <p class="role" id="role"></p>
+      <p class="intro" id="intro"></p>
+      <div class="btns">
+        <a class="btn primary" id="cv" download>Download CV</a>
+        <a class="btn" href="#projects">Projects</a>
+      </div>
     </div>
-    <nav aria-label="Sections">
-      <a href="#home" data-i18n="nav_home">Home</a>
-      <a href="#about" data-i18n="nav_about">About</a>
-      <a href="#skills" data-i18n="nav_skills">Skills</a>
-      <a href="#projects" data-i18n="nav_projects">Projects</a>
-      <a href="#contact" data-i18n="nav_contact">Contact</a>
-    </nav>
-    <div class="lang" role="group" aria-label="Language">
-      <button type="button" data-lang="en" aria-pressed="true">EN</button>
-      <button type="button" data-lang="es" aria-pressed="false">ES</button>
-    </div>
-  </aside>
-
-  <div class="content">
-    <main>
-      <section class="hero" id="home">
-        <span class="label" data-i18n="hero_label">Portfolio · CITM UPC</span>
-        <h1 data-i18n="hero_h1">I build the engine, the UI and the gameplay.</h1>
-        <div class="dim" aria-hidden="true"><span>C++ · Lua · Unity · Wwise</span></div>
-        <p class="intro" data-i18n="intro">I make games in C++ and Lua on my own engine, and use Unity for AR, VR and fast prototyping.</p>
-        <div class="links">
-          <a href="#skills" data-i18n="cta_skills">See skills ↓</a>
-          <a href="#contact" data-i18n="cta_contact">Get in touch →</a>
-        </div>
-      </section>
-
-      <section id="about">
-        <div class="sec-label"><span class="label" data-i18n="nav_about">About</span></div>
-        <p class="lead" data-i18n="about_lead">Fourth-year student, engine programmer in the making.</p>
-        <p class="about-p" data-i18n="about_p">I study Video Game Design and Development at CITM UPC. I work across engine programming, UI with NoesisGUI and XAML, Lua scripting and audio with Wwise. I have also built AR and VR prototypes in Unity, and an engine of my own in C++ with CMake and SDL.</p>
-        <dl class="table">
-          <div><dt data-i18n="f_studies">Studies</dt><dd data-i18n="f_studies_v">Video Game Design and Development, CITM UPC (4th year)</dd></div>
-          <div><dt data-i18n="f_stack">Stack</dt><dd>C++, Lua, NoesisGUI, Unity, Wwise</dd></div>
-          <div><dt data-i18n="f_engine">Engine</dt><dd data-i18n="f_engine_v">Own engine in C++ with CMake and SDL</dd></div>
-        </dl>
-        <div class="award">
-          <strong data-i18n="award_title">Best Technology</strong>
-          <span data-i18n="award_text">Award at a CITM game jam.</span>
-        </div>
-      </section>
-
-      <section id="skills">
-        <div class="sec-label"><span class="label">Skills</span></div>
-        <ul class="spec">
-          <li>
-            <span class="cat" data-i18n="g_lang">Languages</span>
-            <ul class="items">
-              <li>C++</li>
-              <li>Lua</li>
-              <li>C#</li>
-              <li>Python <span class="note" data-i18n="basic">basic level</span></li>
-            </ul>
-          </li>
-          <li>
-            <span class="cat" data-i18n="g_engines">Engines and UI</span>
-            <ul class="items">
-              <li>Own engine</li>
-              <li>Unity</li>
-              <li>NoesisGUI</li>
-              <li>XAML</li>
-              <li>SDL2 / SDL3</li>
-            </ul>
-          </li>
-          <li>
-            <span class="cat" data-i18n="g_tools">Audio and tools</span>
-            <ul class="items">
-              <li>Wwise</li>
-              <li>PhysX</li>
-              <li>CMake</li>
-              <li>GitHub</li>
-            </ul>
-          </li>
-        </ul>
-      </section>
-
-      <section id="projects">
-        <div class="sec-label"><span class="label" data-i18n="proj_title">Projects</span></div>
-        <div class="empty">
-          <strong data-i18n="soon">Coming soon</strong>
-          <p data-i18n="proj_text">My projects will be listed here.</p>
-        </div>
-      </section>
-
-      <section id="contact">
-        <div class="sec-label"><span class="label" data-i18n="nav_contact">Contact</span></div>
-        <h2 class="contact-h" data-i18n="contact_title">Let's build something together.</h2>
-        <p class="contact-p" data-i18n="contact_text">If you have a project, a collaboration or an opening at a studio, get in touch.</p>
-        <!-- Replace each "to be added" with a link, for example: <a href="https://github.com/your-user">github.com/your-user</a> -->
-        <ul class="rows">
-          <li><span class="where">Email</span><span class="value" data-i18n="tba">to be added</span></li>
-          <li><span class="where">GitHub</span><span class="value" data-i18n="tba">to be added</span></li>
-          <li><span class="where">LinkedIn</span><span class="value" data-i18n="tba">to be added</span></li>
-          <li><span class="where">Itch.io</span><span class="value" data-i18n="tba">to be added</span></li>
-        </ul>
-      </section>
-    </main>
-
-    <footer>
-      <dl class="titleblock">
-        <div><dt data-i18n="tb_drawing">Drawing</dt><dd>Portfolio</dd></div>
-        <div><dt data-i18n="tb_author">Author</dt><dd>Toni</dd></div>
-        <div><dt data-i18n="tb_discipline">Discipline</dt><dd data-i18n="tb_discipline_v">Game programming</dd></div>
-        <div><dt data-i18n="tb_sheet">Sheet</dt><dd>1 / 1</dd></div>
-      </dl>
-    </footer>
+    <div id="avatar"></div>
   </div>
-
+  <div class="stats" id="stats"></div>
 </div>
 
+<section id="experience"><div class="wrap"><h2>Experience</h2><div class="timeline" id="timeline"></div></div></section>
+<section id="skills"><div class="wrap"><h2>Skills</h2><div id="skillList"></div></div></section>
+<section id="projects"><div class="wrap"><h2>Projects</h2><div class="grid" id="projectGrid"></div></div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>© Developer Portfolio by <a id="footName" href="#"></a></span>
+  <span class="gh" id="gh"></span>
+</div></footer>
+
+<script src="data.js"></script>
 <script>
-(function () {
-  var dict = {
-    en: {
-      title: "Toni · Game Programmer",
-      tagline: "Game programmer",
-      nav_home: "Home", nav_about: "About", nav_skills: "Skills", nav_projects: "Projects", nav_contact: "Contact",
-      hero_label: "Portfolio · CITM UPC",
-      hero_h1: "I build the engine, the UI and the gameplay.",
-      intro: "I make games in C++ and Lua on my own engine, and use Unity for AR, VR and fast prototyping.",
-      cta_skills: "See skills ↓", cta_contact: "Get in touch →",
-      about_lead: "Fourth-year student, engine programmer in the making.",
-      about_p: "I study Video Game Design and Development at CITM UPC. I work across engine programming, UI with NoesisGUI and XAML, Lua scripting and audio with Wwise. I have also built AR and VR prototypes in Unity, and an engine of my own in C++ with CMake and SDL.",
-      f_studies: "Studies", f_studies_v: "Video Game Design and Development, CITM UPC (4th year)",
-      f_stack: "Stack", f_engine: "Engine", f_engine_v: "Own engine in C++ with CMake and SDL",
-      award_title: "Best Technology", award_text: "Award at a CITM game jam.",
-      g_lang: "Languages", g_engines: "Engines and UI", g_tools: "Audio and tools", basic: "basic level",
-      proj_title: "Projects", soon: "Coming soon", proj_text: "My projects will be listed here.",
-      contact_title: "Let's build something together.",
-      contact_text: "If you have a project, a collaboration or an opening at a studio, get in touch.",
-      tba: "to be added",
-      tb_drawing: "Drawing", tb_author: "Author", tb_discipline: "Discipline", tb_discipline_v: "Game programming", tb_sheet: "Sheet"
-    },
-    es: {
-      title: "Toni · Programador de videojuegos",
-      tagline: "Programador de videojuegos",
-      nav_home: "Inicio", nav_about: "Sobre mí", nav_skills: "Skills", nav_projects: "Proyectos", nav_contact: "Contacto",
-      hero_label: "Portfolio · CITM UPC",
-      hero_h1: "Programo el motor, la interfaz y el gameplay.",
-      intro: "Hago juegos en C++ y Lua sobre un motor propio, y uso Unity para AR, VR y prototipado rápido.",
-      cta_skills: "Ver skills ↓", cta_contact: "Contactar →",
-      about_lead: "Estudiante de cuarto curso, programador de motor en formación.",
-      about_p: "Estudio Diseño y Desarrollo de Videojuegos en CITM UPC. Trabajo en programación de motor, interfaz con NoesisGUI y XAML, scripting en Lua y audio con Wwise. También he hecho prototipos de AR y VR en Unity, y un motor propio en C++ con CMake y SDL.",
-      f_studies: "Estudios", f_studies_v: "Diseño y Desarrollo de Videojuegos, CITM UPC (4º curso)",
-      f_stack: "Stack", f_engine: "Motor", f_engine_v: "Propio, en C++ con CMake y SDL",
-      award_title: "Mejor tecnología", award_text: "Premio en una game jam de CITM.",
-      g_lang: "Lenguajes", g_engines: "Motores y UI", g_tools: "Audio y herramientas", basic: "nivel básico",
-      proj_title: "Proyectos", soon: "Próximamente", proj_text: "Aquí aparecerán mis proyectos.",
-      contact_title: "Construyamos algo juntos.",
-      contact_text: "Si tienes un proyecto, una colaboración o una oportunidad en un estudio, escríbeme.",
-      tba: "por añadir",
-      tb_drawing: "Plano", tb_author: "Autor", tb_discipline: "Disciplina", tb_discipline_v: "Programación de videojuegos", tb_sheet: "Hoja"
-    }
-  };
-  var nodes = document.querySelectorAll('[data-i18n]');
-  var buttons = document.querySelectorAll('.lang button');
+const $ = id => document.getElementById(id);
+function el(tag, props = {}, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(props)) k === "class" ? n.className = v : n.setAttribute(k, v);
+  kids.forEach(k => n.append(k));
+  return n;
+}
+const tags = list => el("div", {class:"tags"}, ...(list||[]).map(t => el("span", {class:"tag"}, t)));
+const ICONS = {
+  github:'<svg viewBox="0 0 24 24"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>',
+  linkedin:'<svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>'
+};
 
-  function setLang(lang) {
-    var t = dict[lang] || dict.en;
-    document.documentElement.lang = lang;
-    nodes.forEach(function (el) {
-      var v = t[el.getAttribute('data-i18n')];
-      if (v != null) el.textContent = v;
-    });
-    document.title = t.title;
-    buttons.forEach(function (b) {
-      b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
-    });
-    try { localStorage.setItem('lang', lang); } catch (e) {}
-  }
-  buttons.forEach(function (b) {
-    b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
-  });
-  var saved = 'en';
-  try { saved = localStorage.getItem('lang') || 'en'; } catch (e) {}
-  setLang(saved === 'es' ? 'es' : 'en');
+document.title = `${SITE.name} | ${SITE.role}`;
+$("brand").textContent = SITE.name;
+$("name").textContent = SITE.name;
+$("role").textContent = SITE.role;
+$("intro").textContent = SITE.intro;
+$("cv").href = SITE.cv;
+$("footName").textContent = SITE.name;
+$("footName").href = SITE.github;
 
-  /* Marca en la columna lateral la sección visible */
-  var links = document.querySelectorAll('.rail nav a');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        links.forEach(function (a) {
-          a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + e.target.id));
-        });
-      });
-    }, { rootMargin: '-40% 0px -55% 0px' });
-    document.querySelectorAll('.content > main > section').forEach(function (s) { io.observe(s); });
-  }
-})();
+// iconos
+[["github", SITE.github], ["linkedin", SITE.linkedin]].forEach(([k, url]) => {
+  if (!url) return;
+  const a = el("a", {href:url, target:"_blank", rel:"noopener", "aria-label":k});
+  a.innerHTML = ICONS[k];
+  $("icons").append(a);
+});
+
+// avatar
+if (SITE.photo) $("avatar").append(el("img", {class:"avatar", src:SITE.photo, alt:SITE.name}));
+else $("avatar").append(el("div", {class:"avatar", "aria-hidden":"true"}, SITE.name.split(" ").map(w => w[0]).slice(0,2).join("")));
+
+// stats
+SITE.stats.forEach(s => $("stats").append(el("div", {class:"stat"}, el("span", {}, s.title), el("strong", {}, s.value))));
+
+// experiencia
+SITE.experience.forEach(j => {
+  const co = j.companyUrl ? el("a", {class:"co", href:j.companyUrl, target:"_blank", rel:"noopener"}, j.company) : el("span", {class:"co"}, j.company);
+  const job = el("article", {class:"job"}, el("time", {}, j.dates), el("h3", {}, j.title), co, el("p", {}, j.description), tags(j.tags));
+  if (j.link) job.append(el("div", {class:"links"}, el("a", {href:j.link.url, target:"_blank", rel:"noopener"}, j.link.label)));
+  $("timeline").append(job);
+});
+
+// skills
+SITE.skills.forEach(g => $("skillList").append(el("div", {class:"skill-group"}, el("h3", {}, g.group), tags(g.items))));
+
+// proyectos
+SITE.projects.forEach(p => $("projectGrid").append(
+  el("a", {class:"card", href:`project.html?p=${encodeURIComponent(p.slug)}`}, el("h3", {}, p.title), el("p", {}, p.summary), tags(p.tags))
+));
+
+// footer GitHub
+if (SITE.repo) {
+  $("gh").append(el("a", {href:SITE.repo, target:"_blank", rel:"noopener"}, "STAR"), el("a", {href:SITE.repo + "/fork", target:"_blank", rel:"noopener"}, "FORK"));
+}
 </script>
 </body>
 </html>
