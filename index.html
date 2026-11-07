@@ -1,447 +1,394 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Portfolio de Toni, programador de videojuegos: proyectos, skills y contacto.">
-<title>Portfolio de Toni</title>
+<meta name="description" content="Toni's portfolio: game programmer working on engines, UI and gameplay.">
+<title>Toni · Game Programmer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,400..800;125,700..900&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: una sola página con barra superior fija (Sobre mí, Skills, Proyectos, Contacto), hero con foto, rejilla de tarjetas con miniatura y formulario de contacto sustituido por datos copiables. */
+/* Layout: plano cianotipo. Columna lateral fija con nombre, navegación e idioma; a la derecha, secciones separadas por líneas de dibujo técnico, con una frase gigante como protagonista y un cajetín de plano como pie. */
 :root {
-  color-scheme: light;
-  --bg: #F2F4F7;
-  --surface: #E8ECF1;
-  --surface-2: #DCE2EA;
-  --fg: #11151B;
-  --muted: #5A6472;
-  --line: #CBD2DC;
-  --accent: #2650F5;
-  --accent-ink: #FFFFFF;
-  --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
-  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0D1117;
-    --surface: #161C25;
-    --surface-2: #1F2733;
-    --fg: #E9EDF3;
-    --muted: #93A0B2;
-    --line: #28313D;
-    --accent: #8CA6FF;
-    --accent-ink: #0D1117;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0D1117;
-  --surface: #161C25;
-  --surface-2: #1F2733;
-  --fg: #E9EDF3;
-  --muted: #93A0B2;
-  --line: #28313D;
-  --accent: #8CA6FF;
-  --accent-ink: #0D1117;
   color-scheme: dark;
+  --bg: #1237CF;
+  --bg-deep: #0D2AA8;
+  --fg: #F3F7FF;
+  --muted: #BCCBFA;
+  --line: rgba(243, 247, 255, 0.28);
+  --line-soft: rgba(243, 247, 255, 0.12);
+  --accent: #8EE7FF;
+  --accent-ink: #0A1F85;
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; }
-img { max-width: 100%; }
 html { scroll-behavior: auto; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 body {
-  background: var(--bg);
+  margin: 0;
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 48px 48px;
   color: var(--fg);
   font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.65;
 }
 a { color: var(--accent); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.inner {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
+::selection { background: var(--accent); color: var(--accent-ink); }
+
+.mono { font-family: var(--font-mono); }
 .label {
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
 }
 
-/* Barra superior */
-.topbar {
+/* Estructura */
+.shell {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Columna lateral */
+.rail {
   position: sticky;
   top: 0;
-  z-index: 11;
-  background: var(--bg);
-  border-bottom: 1px solid var(--line);
-}
-.topbar .inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding-block: 12px; }
-.brand { font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; color: var(--fg); text-decoration: none; }
-.topbar nav { display: flex; flex-wrap: wrap; gap: 4px 20px; }
-.topbar nav a { font-family: var(--font-mono); font-size: 13px; color: var(--muted); text-decoration: none; padding: 4px 0; border-bottom: 2px solid transparent; }
-.topbar nav a:hover { color: var(--fg); border-bottom-color: var(--accent); }
-
-main > section { padding-block: 72px 0; scroll-margin-top: 64px; }
-main > section:last-child { padding-bottom: 96px; }
-h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.75rem, 5vw, 2.25rem); letter-spacing: -0.02em; line-height: 1.1; margin: 0; text-wrap: balance; }
-.section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 24px; margin-bottom: 32px; }
-
-/* Hero */
-.hero { padding-block: 64px 0; }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 48px; align-items: center; }
-.hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(3rem, 11vw, 6rem); line-height: 0.95; letter-spacing: -0.035em; margin: 16px 0 20px; text-wrap: balance; }
-.hero .role { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.2rem, 3vw, 1.5rem); margin: 0 0 16px; text-wrap: balance; }
-.hero .intro { max-width: 52ch; color: var(--muted); margin: 0 0 28px; }
-.cta { display: flex; flex-wrap: wrap; gap: 12px; }
-.btn { font-family: var(--font-mono); font-size: 14px; font-weight: 500; text-decoration: none; padding: 12px 20px; border-radius: 4px; border: 1px solid var(--accent); }
-.btn-primary { background: var(--accent); color: var(--accent-ink); }
-.btn-ghost { background: transparent; color: var(--accent); }
-.btn:hover { filter: brightness(1.1); }
-.photo {
-  aspect-ratio: 4 / 5;
-  max-width: 100%;
-  width: 100%;
-  background:
-    repeating-linear-gradient(0deg, transparent 0 23px, var(--line) 23px 24px),
-    repeating-linear-gradient(90deg, transparent 0 23px, var(--line) 23px 24px),
-    var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 4px;
+  align-self: start;
+  height: 100vh;
+  height: 100svh;
   display: flex;
-  align-items: end;
-  padding: 16px;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  padding-block: 40px;
+  padding-right: 32px;
+  border-right: 1px solid var(--line);
 }
-.photo span { font-family: var(--font-mono); font-size: 12px; background: var(--bg); padding: 4px 8px; border-radius: 3px; color: var(--muted); }
+.brand { font-family: var(--font-display); font-stretch: 125%; font-weight: 900; font-size: 2.6rem; letter-spacing: -0.04em; line-height: 1; color: var(--fg); text-decoration: none; }
+.rail .tagline { margin: 10px 0 0; font-size: 14px; color: var(--muted); }
+.rail nav { display: flex; flex-direction: column; gap: 2px; }
+.rail nav a {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line-soft);
+}
+.rail nav a::after { content: "→"; opacity: 0; font-family: var(--font-mono); }
+.rail nav a:hover, .rail nav a[aria-current="true"] { color: var(--fg); }
+.rail nav a:hover::after, .rail nav a[aria-current="true"]::after { opacity: 1; color: var(--accent); }
+.lang { display: inline-flex; align-self: flex-start; border: 1px solid var(--line); }
+.lang button { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; color: var(--muted); background: transparent; border: 0; padding: 6px 12px; cursor: pointer; }
+.lang button:hover { color: var(--fg); }
+.lang button[aria-pressed="true"] { background: var(--fg); color: var(--accent-ink); }
+
+/* Contenido */
+.content { min-width: 0; padding-left: clamp(24px, 5vw, 64px); }
+.content > section { padding-block: 96px; border-top: 1px solid var(--line); scroll-margin-top: 0; }
+.content > section:first-child { border-top: 0; padding-top: 72px; }
+.sec-label { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
+.sec-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+/* Portada */
+.hero .label { display: block; margin-bottom: 28px; }
+h1 {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 800;
+  font-size: clamp(2.3rem, 7.4vw, 5.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin: 0;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+.dim { position: relative; margin: 40px 0 28px; border-top: 1px solid var(--fg); max-width: 640px; }
+.dim::before, .dim::after { content: ""; position: absolute; top: -6px; width: 1px; height: 11px; background: var(--fg); }
+.dim::before { left: 0; }
+.dim::after { right: 0; }
+.dim span { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: var(--bg); padding: 0 12px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+.intro { max-width: 52ch; margin: 0 0 32px; font-size: 1.15rem; color: var(--muted); }
+.links { display: flex; flex-wrap: wrap; gap: 12px 32px; }
+.links a { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; color: var(--fg); text-decoration: none; border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
+.links a:hover { color: var(--accent); }
 
 /* Sobre mí */
-.about-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; }
-.about-text p { margin: 0 0 16px; max-width: 62ch; }
-.facts { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 12px 20px; align-content: start; }
-.facts dt { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
-.facts dd { margin: 0; }
-.award { display: flex; flex-direction: column; gap: 2px; margin-top: 24px; border-left: 3px solid var(--accent); padding: 2px 0 2px 16px; }
-.award strong { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; }
-.award span { color: var(--muted); font-size: 15px; }
+.lead { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1.3; letter-spacing: -0.02em; margin: 0 0 24px; max-width: 30ch; text-wrap: balance; }
+.about-p { max-width: 58ch; margin: 0 0 40px; color: var(--muted); }
+.table { margin: 0; border-top: 1px solid var(--line); }
+.table > div { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 8px 24px; padding-block: 14px; border-bottom: 1px solid var(--line); }
+.table dt { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+.table dd { margin: 0; }
+.award { margin-top: 40px; display: inline-flex; flex-direction: column; gap: 2px; border: 1px solid var(--accent); padding: 14px 20px; }
+.award strong { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--accent); }
+.award span { font-size: 15px; color: var(--muted); }
 
 /* Skills */
-.skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 40px 32px; }
-.skill-group { min-width: 0; display: flex; flex-direction: column; gap: 14px; }
-.tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 120px), 1fr)); gap: 10px; }
-.tile { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 12px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-.tile .mark { font-family: var(--font-mono); font-weight: 500; font-size: 13px; width: 40px; height: 40px; display: grid; place-items: center; background: var(--bg); border: 1px solid var(--line); border-radius: 4px; color: var(--accent); }
-.tile .name { font-size: 14px; line-height: 1.3; overflow-wrap: anywhere; }
-.tile .note { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-top: -6px; }
+.spec { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.spec > li { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 8px 24px; padding-block: 20px; border-bottom: 1px solid var(--line); }
+.spec .cat { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding-top: 8px; }
+.items { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px 0; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.3rem, 3.2vw, 2rem); letter-spacing: -0.02em; line-height: 1.25; }
+.items li { display: inline-flex; align-items: baseline; gap: 8px; }
+.items li:not(:last-child)::after { content: "/"; color: var(--accent); font-weight: 400; margin-inline: 14px; }
+.items .note { font-family: var(--font-mono); font-weight: 400; font-size: 12px; letter-spacing: 0.04em; color: var(--muted); }
+.items .note::before { content: "("; }
+.items .note::after { content: ")"; }
 
-/* Filtros y proyectos */
-.filters { display: flex; flex-wrap: wrap; gap: 8px; }
-.filters button { font-family: var(--font-mono); font-size: 13px; color: var(--fg); background: transparent; border: 1px solid var(--line); border-radius: 4px; padding: 6px 12px; cursor: pointer; }
-.filters button:hover { border-color: var(--accent); }
-.filters button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 24px; }
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; display: flex; flex-direction: column; min-width: 0; overflow: hidden; }
-.card[hidden] { display: none; }
-.thumb {
-  aspect-ratio: 16 / 9;
-  max-width: 100%;
-  background:
-    repeating-linear-gradient(0deg, transparent 0 19px, var(--line) 19px 20px),
-    repeating-linear-gradient(90deg, transparent 0 19px, var(--line) 19px 20px),
-    var(--surface-2);
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  padding: 10px 12px;
-}
-.thumb .cat { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; background: var(--accent); color: var(--accent-ink); padding: 3px 8px; border-radius: 3px; }
-.thumb .pending { font-family: var(--font-mono); font-size: 11px; color: var(--muted); background: var(--bg); padding: 3px 8px; border-radius: 3px; }
-.card-body { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-.card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; letter-spacing: -0.01em; line-height: 1.2; margin: 0; }
-.card .engine { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
-.card p { margin: 0; font-size: 15px; color: var(--muted); }
-.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: auto 0 0; padding: 8px 0 0; list-style: none; }
-.tags li { font-family: var(--font-mono); font-size: 11px; background: var(--bg); color: var(--fg); padding: 2px 8px; border-radius: 3px; border: 1px solid var(--line); }
-.badge { align-self: flex-start; font-family: var(--font-mono); font-size: 11px; border: 1px solid var(--accent); color: var(--accent); padding: 2px 8px; border-radius: 3px; }
-.empty { color: var(--muted); margin-top: 16px; }
+/* Proyectos */
+.empty { border: 1px dashed var(--line); padding: 48px 24px; display: flex; flex-direction: column; gap: 10px; }
+.empty strong { font-family: var(--font-display); font-stretch: 125%; font-weight: 800; font-size: clamp(1.4rem, 3.4vw, 2.2rem); letter-spacing: -0.02em; line-height: 1.1; }
+.empty p { margin: 0; color: var(--muted); }
 
 /* Contacto */
-.contact-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 48px; }
-.contact-grid p { margin: 12px 0 0; max-width: 52ch; color: var(--muted); }
-.contact-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-top: 1px solid var(--line); }
-.contact-list li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding-block: 14px; border-bottom: 1px solid var(--line); }
-.contact-list .where { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-.contact-list .value { font-family: var(--font-mono); font-size: 14px; color: var(--muted); }
+.contact-h { font-family: var(--font-display); font-stretch: 125%; font-weight: 800; font-size: clamp(1.8rem, 5vw, 3.4rem); line-height: 1.02; letter-spacing: -0.03em; margin: 0 0 20px; max-width: 16ch; text-wrap: balance; }
+.contact-p { margin: 0 0 40px; max-width: 50ch; color: var(--muted); }
+.rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.rows li { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 4px 24px; align-items: baseline; padding-block: 16px; border-bottom: 1px solid var(--line); }
+.rows .where { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.rows .value { font-family: var(--font-display); font-weight: 600; font-size: 1.3rem; letter-spacing: -0.01em; color: var(--muted); overflow-wrap: anywhere; }
 
-footer .inner { padding-block: 24px 40px; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+/* Cajetín de plano */
+footer { border-top: 1px solid var(--line); padding-block: 40px 56px; }
+.titleblock { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); border: 1px solid var(--fg); max-width: 720px; margin: 0; }
+.titleblock > div { padding: 10px 14px; border-right: 1px solid var(--line); min-width: 0; }
+.titleblock > div:last-child { border-right: 0; }
+.titleblock dt { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.titleblock dd { margin: 2px 0 0; font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; overflow-wrap: anywhere; }
 
-@media (max-width: 760px) {
-  .hero-grid, .about-grid, .contact-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  .photo { max-width: 320px; aspect-ratio: 1 / 1; }
-  main > section { padding-top: 56px; }
+@media (max-width: 860px) {
+  .shell { grid-template-columns: minmax(0, 1fr); }
+  .rail { position: static; height: auto; padding-block: 24px; padding-right: 0; border-right: 0; border-bottom: 1px solid var(--line); gap: 20px; }
+  .rail nav { flex-direction: row; flex-wrap: wrap; gap: 4px 20px; }
+  .rail nav a { border-bottom: 0; font-size: 1rem; }
+  .rail nav a::after { display: none; }
+  .content { padding-left: 0; }
+  .content > section { padding-block: 64px; }
+  .content > section:first-child { padding-top: 48px; }
+  .table > div, .spec > li, .rows li { grid-template-columns: minmax(0, 1fr); }
+  .spec .cat { padding-top: 0; }
+  .dim span { font-size: 11px; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .filters button, .btn { transition: background-color 0.15s, border-color 0.15s, filter 0.15s; }
+  .lang button, .links a, .rail nav a { transition: color 0.15s, background-color 0.15s; }
 }
 </style>
 </head>
 <body>
+<div class="shell">
 
-<header class="topbar">
-  <div class="inner">
-    <a class="brand" href="#inicio">Toni</a>
-    <nav aria-label="Secciones">
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#skills">Skills</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#contacto">Contacto</a>
+  <aside class="rail">
+    <div>
+      <a class="brand" href="#home">Toni</a>
+      <p class="tagline" data-i18n="tagline">Game programmer</p>
+    </div>
+    <nav aria-label="Sections">
+      <a href="#home" data-i18n="nav_home">Home</a>
+      <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#skills" data-i18n="nav_skills">Skills</a>
+      <a href="#projects" data-i18n="nav_projects">Projects</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
     </nav>
-  </div>
-</header>
-
-<main>
-  <section class="hero" id="inicio">
-    <div class="inner hero-grid">
-      <div>
-        <span class="label">Portfolio · Videojuegos</span>
-        <h1>Toni</h1>
-        <p class="role">Programador de videojuegos: motor, UI y gameplay.</p>
-        <p class="intro">Hago juegos en C++ y Lua sobre un motor propio, y uso Unity cuando el proyecto pide AR, VR o prototipado rápido.</p>
-        <div class="cta">
-          <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
-          <a class="btn btn-ghost" href="#contacto">Contactar</a>
-        </div>
-      </div>
-      <div class="photo" role="img" aria-label="Espacio reservado para la foto de perfil"><span>foto de perfil</span></div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="es" aria-pressed="false">ES</button>
     </div>
-  </section>
+  </aside>
 
-  <section id="sobre-mi">
-    <div class="inner">
-      <div class="section-head"><h2>Sobre mí</h2></div>
-      <div class="about-grid">
-        <div class="about-text">
-          <p>Soy Toni, estudiante de cuarto curso del Grado en Diseño y Desarrollo de Videojuegos en CITM UPC. Me muevo entre la programación de motor, la interfaz con NoesisGUI y XAML, el scripting en Lua y la implementación de audio con Wwise.</p>
-          <p>También he hecho prototipos en Unity con realidad aumentada y realidad virtual, y he construido un motor propio en C++ con CMake y SDL.</p>
-          <div class="award">
-            <strong>Mejor tecnología</strong>
-            <span>Premio en una game jam de CITM.</span>
-          </div>
+  <div class="content">
+    <main>
+      <section class="hero" id="home">
+        <span class="label" data-i18n="hero_label">Portfolio · CITM UPC</span>
+        <h1 data-i18n="hero_h1">I build the engine, the UI and the gameplay.</h1>
+        <div class="dim" aria-hidden="true"><span>C++ · Lua · Unity · Wwise</span></div>
+        <p class="intro" data-i18n="intro">I make games in C++ and Lua on my own engine, and use Unity for AR, VR and fast prototyping.</p>
+        <div class="links">
+          <a href="#skills" data-i18n="cta_skills">See skills ↓</a>
+          <a href="#contact" data-i18n="cta_contact">Get in touch →</a>
         </div>
-        <dl class="facts">
-          <dt>Estudios</dt><dd>Diseño y Desarrollo de Videojuegos, CITM UPC (4º)</dd>
-          <dt>Stack</dt><dd>C++, Lua, NoesisGUI, Unity, Wwise</dd>
-          <dt>Motor</dt><dd>Propio, en C++ con CMake y SDL</dd>
+      </section>
+
+      <section id="about">
+        <div class="sec-label"><span class="label" data-i18n="nav_about">About</span></div>
+        <p class="lead" data-i18n="about_lead">Fourth-year student, engine programmer in the making.</p>
+        <p class="about-p" data-i18n="about_p">I study Video Game Design and Development at CITM UPC. I work across engine programming, UI with NoesisGUI and XAML, Lua scripting and audio with Wwise. I have also built AR and VR prototypes in Unity, and an engine of my own in C++ with CMake and SDL.</p>
+        <dl class="table">
+          <div><dt data-i18n="f_studies">Studies</dt><dd data-i18n="f_studies_v">Video Game Design and Development, CITM UPC (4th year)</dd></div>
+          <div><dt data-i18n="f_stack">Stack</dt><dd>C++, Lua, NoesisGUI, Unity, Wwise</dd></div>
+          <div><dt data-i18n="f_engine">Engine</dt><dd data-i18n="f_engine_v">Own engine in C++ with CMake and SDL</dd></div>
         </dl>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills">
-    <div class="inner">
-      <div class="section-head"><h2>Skills</h2></div>
-      <div class="skill-groups">
-        <div class="skill-group">
-          <span class="label">Lenguajes</span>
-          <ul class="tiles">
-            <li class="tile"><span class="mark">C++</span><span class="name">C++</span></li>
-            <li class="tile"><span class="mark">Lua</span><span class="name">Lua</span></li>
-            <li class="tile"><span class="mark">C#</span><span class="name">C#</span></li>
-            <li class="tile"><span class="mark">Py</span><span class="name">Python</span><span class="note">nivel básico</span></li>
-          </ul>
+        <div class="award">
+          <strong data-i18n="award_title">Best Technology</strong>
+          <span data-i18n="award_text">Award at a CITM game jam.</span>
         </div>
-        <div class="skill-group">
-          <span class="label">Motores y UI</span>
-          <ul class="tiles">
-            <li class="tile"><span class="mark">Un</span><span class="name">Unity</span></li>
-            <li class="tile"><span class="mark">Ns</span><span class="name">NoesisGUI</span></li>
-            <li class="tile"><span class="mark">XAML</span><span class="name">XAML</span></li>
-            <li class="tile"><span class="mark">SDL</span><span class="name">SDL2 / SDL3</span></li>
-          </ul>
+      </section>
+
+      <section id="skills">
+        <div class="sec-label"><span class="label">Skills</span></div>
+        <ul class="spec">
+          <li>
+            <span class="cat" data-i18n="g_lang">Languages</span>
+            <ul class="items">
+              <li>C++</li>
+              <li>Lua</li>
+              <li>C#</li>
+              <li>Python <span class="note" data-i18n="basic">basic level</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="cat" data-i18n="g_engines">Engines and UI</span>
+            <ul class="items">
+              <li>Own engine</li>
+              <li>Unity</li>
+              <li>NoesisGUI</li>
+              <li>XAML</li>
+              <li>SDL2 / SDL3</li>
+            </ul>
+          </li>
+          <li>
+            <span class="cat" data-i18n="g_tools">Audio and tools</span>
+            <ul class="items">
+              <li>Wwise</li>
+              <li>PhysX</li>
+              <li>CMake</li>
+              <li>GitHub</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section id="projects">
+        <div class="sec-label"><span class="label" data-i18n="proj_title">Projects</span></div>
+        <div class="empty">
+          <strong data-i18n="soon">Coming soon</strong>
+          <p data-i18n="proj_text">My projects will be listed here.</p>
         </div>
-        <div class="skill-group">
-          <span class="label">Audio y herramientas</span>
-          <ul class="tiles">
-            <li class="tile"><span class="mark">Ww</span><span class="name">Wwise</span></li>
-            <li class="tile"><span class="mark">PhX</span><span class="name">PhysX</span></li>
-            <li class="tile"><span class="mark">CM</span><span class="name">CMake</span></li>
-            <li class="tile"><span class="mark">Git</span><span class="name">GitHub</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <section id="proyectos">
-    <div class="inner">
-      <div class="section-head">
-        <h2>Proyectos</h2>
-        <div class="filters" role="group" aria-label="Filtrar proyectos">
-          <button type="button" data-filter="all" aria-pressed="true">Todos</button>
-          <button type="button" data-filter="motor" aria-pressed="false">Motor propio</button>
-          <button type="button" data-filter="unity" aria-pressed="false">Unity</button>
-          <button type="button" data-filter="ar" aria-pressed="false">AR</button>
-          <button type="button" data-filter="vr" aria-pressed="false">VR</button>
-        </div>
-      </div>
+      <section id="contact">
+        <div class="sec-label"><span class="label" data-i18n="nav_contact">Contact</span></div>
+        <h2 class="contact-h" data-i18n="contact_title">Let's build something together.</h2>
+        <p class="contact-p" data-i18n="contact_text">If you have a project, a collaboration or an opening at a studio, get in touch.</p>
+        <!-- Replace each "to be added" with a link, for example: <a href="https://github.com/your-user">github.com/your-user</a> -->
+        <ul class="rows">
+          <li><span class="where">Email</span><span class="value" data-i18n="tba">to be added</span></li>
+          <li><span class="where">GitHub</span><span class="value" data-i18n="tba">to be added</span></li>
+          <li><span class="where">LinkedIn</span><span class="value" data-i18n="tba">to be added</span></li>
+          <li><span class="where">Itch.io</span><span class="value" data-i18n="tba">to be added</span></li>
+        </ul>
+      </section>
+    </main>
 
-      <ul class="cards" id="project-list">
-        <li class="card" data-cat="motor">
-          <div class="thumb"><span class="cat">Game</span><span class="pending">captura pendiente</span></div>
-          <div class="card-body">
-            <h3>Son of Ithaca</h3>
-            <span class="engine">WaveEngine · C++ / Lua</span>
-            <p>Juego de mitología griega con UI en NoesisGUI, lógica en Lua y física PhysX. Incluye jefe Achilles, gestor de interacciones y audio dinámico día/noche en Wwise.</p>
-            <ul class="tags"><li>C++</li><li>Lua</li><li>NoesisGUI</li><li>PhysX</li><li>Wwise</li></ul>
-          </div>
-        </li>
+    <footer>
+      <dl class="titleblock">
+        <div><dt data-i18n="tb_drawing">Drawing</dt><dd>Portfolio</dd></div>
+        <div><dt data-i18n="tb_author">Author</dt><dd>Toni</dd></div>
+        <div><dt data-i18n="tb_discipline">Discipline</dt><dd data-i18n="tb_discipline_v">Game programming</dd></div>
+        <div><dt data-i18n="tb_sheet">Sheet</dt><dd>1 / 1</dd></div>
+      </dl>
+    </footer>
+  </div>
 
-        <li class="card" data-cat="motor">
-          <div class="thumb"><span class="cat">Engine</span><span class="pending">captura pendiente</span></div>
-          <div class="card-body">
-            <h3>Motor de juegos propio</h3>
-            <span class="engine">C++ · CMake · SDL2/SDL3</span>
-            <p>Motor construido desde cero en C++, con CMake como sistema de build y SDL para ventana e input.</p>
-            <ul class="tags"><li>C++</li><li>CMake</li><li>SDL</li><li>GitHub</li></ul>
-          </div>
-        </li>
-
-        <li class="card" data-cat="motor">
-          <div class="thumb"><span class="cat">UI</span><span class="pending">captura pendiente</span></div>
-          <div class="card-body">
-            <h3>NEXUS BANK</h3>
-            <span class="engine">NoesisGUI · XAML + Lua</span>
-            <p>Interfaz de gestión bancaria futurista con diez cuentas, transiciones animadas y teclado numérico para depósitos y retiradas.</p>
-            <ul class="tags"><li>XAML</li><li>Lua</li><li>NoesisGUI</li></ul>
-          </div>
-        </li>
-
-        <li class="card" data-cat="unity ar">
-          <div class="thumb"><span class="cat">AR</span><span class="pending">captura pendiente</span></div>
-          <div class="card-body">
-            <h3>Combate Pokémon en AR</h3>
-            <span class="engine">Unity · AR Foundation</span>
-            <p>Combate por turnos con cartas físicas escaneadas. Daño con debilidades y resistencias, IA rival y barras de vida en world space.</p>
-            <ul class="tags"><li>Unity</li><li>C#</li><li>AR Foundation</li><li>JSON</li></ul>
-          </div>
-        </li>
-
-        <li class="card" data-cat="unity ar">
-          <div class="thumb"><span class="cat">AR</span><span class="pending">captura pendiente</span></div>
-          <div class="card-body">
-            <h3>Captura con pokeball</h3>
-            <span class="engine">Unity · AR Foundation</span>
-            <p>Lanzamiento al estilo Pokémon GO con tiro curvo por gesto, y animación de captura con rebote, rayo rojo y partículas.</p>
-            <ul class="tags"><li>Unity</li><li>C#</li><li>Input System</li></ul>
-          </div>
-        </li>
-
-        <li class="card" data-cat="unity">
-          <div class="thumb"><span class="cat">Game</span><span class="pending">captura pendiente</span></div>
-          <div class="card-body">
-            <h3>Juego de bitlles catalanes</h3>
-            <span class="engine">Unity 6 · PC, web y móvil</span>
-            <p>Juego de puntería tipo Angry Birds con estética de bitlles. Menús completos en UGUI y transición de iris con la bola.</p>
-            <ul class="tags"><li>Unity 6</li><li>UGUI</li><li>C#</li></ul>
-          </div>
-        </li>
-
-        <li class="card" data-cat="unity">
-          <div class="thumb"><span class="cat">Game</span><span class="pending">captura pendiente</span></div>
-          <div class="card-body">
-            <h3>Juego de bola por niveles</h3>
-            <span class="engine">Unity</span>
-            <p>Tutorial y veinte niveles con vidas, checkpoints cada cuatro niveles y multiplicador de puntos por niveles consecutivos.</p>
-            <ul class="tags"><li>Unity</li><li>C#</li><li>TextMeshPro</li></ul>
-          </div>
-        </li>
-
-        <li class="card" data-cat="unity">
-          <div class="thumb"><span class="cat">Shaders</span><span class="pending">captura pendiente</span></div>
-          <div class="card-body">
-            <h3>Césped estilo Rocket League</h3>
-            <span class="engine">Unity · shaders</span>
-            <p>Hierba que reacciona al paso de las ruedas, pensada para funcionar bien en móvil y web.</p>
-            <ul class="tags"><li>Unity</li><li>Shaders</li><li>Rendimiento</li></ul>
-          </div>
-        </li>
-
-        <li class="card" data-cat="unity vr">
-          <div class="thumb"><span class="cat">VR</span><span class="pending">captura pendiente</span></div>
-          <div class="card-body">
-            <h3>El dios y su secta</h3>
-            <span class="engine">Unity · Meta Quest</span>
-            <p>Eres un dios que mira desde el cielo a una secta que te reza y construye para ti, con gestión de recursos y miembros con vida propia.</p>
-            <ul class="tags"><li>Unity</li><li>VR</li><li>Meta Quest</li></ul>
-          </div>
-        </li>
-
-        <li class="card" data-cat="unity vr">
-          <div class="thumb"><span class="cat">Gameplay</span><span class="pending">captura pendiente</span></div>
-          <div class="card-body">
-            <h3>Réplica de Super Mario Galaxy</h3>
-            <span class="engine">Unity</span>
-            <p>Gravedad con varias fuentes (esfera, caja, cilindro, toro y plano) y cámara en tercera persona sin gimbal lock.</p>
-            <ul class="tags"><li>Unity</li><li>C#</li><li>Física</li></ul>
-          </div>
-        </li>
-      </ul>
-      <p class="empty" id="empty" hidden>No hay proyectos con este filtro.</p>
-    </div>
-  </section>
-
-  <section id="contacto">
-    <div class="inner contact-grid">
-      <div>
-        <span class="label">Contacto</span>
-        <h2 style="margin-top:12px">Construyamos algo juntos</h2>
-        <p>Si tienes un proyecto, una colaboración o una oportunidad en un estudio, escríbeme.</p>
-      </div>
-      <ul class="contact-list">
-        <!-- Sustituye cada "por añadir" por un enlace, por ejemplo: <a href="https://github.com/tu-usuario">github.com/tu-usuario</a> -->
-        <li><span class="where">Email</span><span class="value">por añadir</span></li>
-        <li><span class="where">GitHub</span><span class="value">por añadir</span></li>
-        <li><span class="where">LinkedIn</span><span class="value">por añadir</span></li>
-        <li><span class="where">Itch.io</span><span class="value">por añadir</span></li>
-      </ul>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="inner">Toni · Portfolio de videojuegos</div>
-</footer>
+</div>
 
 <script>
 (function () {
-  var buttons = document.querySelectorAll('.filters button');
-  var items = document.querySelectorAll('#project-list .card');
-  var empty = document.getElementById('empty');
-  function apply(filter) {
-    var shown = 0;
-    items.forEach(function (li) {
-      var cats = li.getAttribute('data-cat').split(' ');
-      var match = filter === 'all' || cats.indexOf(filter) !== -1;
-      li.hidden = !match;
-      if (match) shown++;
+  var dict = {
+    en: {
+      title: "Toni · Game Programmer",
+      tagline: "Game programmer",
+      nav_home: "Home", nav_about: "About", nav_skills: "Skills", nav_projects: "Projects", nav_contact: "Contact",
+      hero_label: "Portfolio · CITM UPC",
+      hero_h1: "I build the engine, the UI and the gameplay.",
+      intro: "I make games in C++ and Lua on my own engine, and use Unity for AR, VR and fast prototyping.",
+      cta_skills: "See skills ↓", cta_contact: "Get in touch →",
+      about_lead: "Fourth-year student, engine programmer in the making.",
+      about_p: "I study Video Game Design and Development at CITM UPC. I work across engine programming, UI with NoesisGUI and XAML, Lua scripting and audio with Wwise. I have also built AR and VR prototypes in Unity, and an engine of my own in C++ with CMake and SDL.",
+      f_studies: "Studies", f_studies_v: "Video Game Design and Development, CITM UPC (4th year)",
+      f_stack: "Stack", f_engine: "Engine", f_engine_v: "Own engine in C++ with CMake and SDL",
+      award_title: "Best Technology", award_text: "Award at a CITM game jam.",
+      g_lang: "Languages", g_engines: "Engines and UI", g_tools: "Audio and tools", basic: "basic level",
+      proj_title: "Projects", soon: "Coming soon", proj_text: "My projects will be listed here.",
+      contact_title: "Let's build something together.",
+      contact_text: "If you have a project, a collaboration or an opening at a studio, get in touch.",
+      tba: "to be added",
+      tb_drawing: "Drawing", tb_author: "Author", tb_discipline: "Discipline", tb_discipline_v: "Game programming", tb_sheet: "Sheet"
+    },
+    es: {
+      title: "Toni · Programador de videojuegos",
+      tagline: "Programador de videojuegos",
+      nav_home: "Inicio", nav_about: "Sobre mí", nav_skills: "Skills", nav_projects: "Proyectos", nav_contact: "Contacto",
+      hero_label: "Portfolio · CITM UPC",
+      hero_h1: "Programo el motor, la interfaz y el gameplay.",
+      intro: "Hago juegos en C++ y Lua sobre un motor propio, y uso Unity para AR, VR y prototipado rápido.",
+      cta_skills: "Ver skills ↓", cta_contact: "Contactar →",
+      about_lead: "Estudiante de cuarto curso, programador de motor en formación.",
+      about_p: "Estudio Diseño y Desarrollo de Videojuegos en CITM UPC. Trabajo en programación de motor, interfaz con NoesisGUI y XAML, scripting en Lua y audio con Wwise. También he hecho prototipos de AR y VR en Unity, y un motor propio en C++ con CMake y SDL.",
+      f_studies: "Estudios", f_studies_v: "Diseño y Desarrollo de Videojuegos, CITM UPC (4º curso)",
+      f_stack: "Stack", f_engine: "Motor", f_engine_v: "Propio, en C++ con CMake y SDL",
+      award_title: "Mejor tecnología", award_text: "Premio en una game jam de CITM.",
+      g_lang: "Lenguajes", g_engines: "Motores y UI", g_tools: "Audio y herramientas", basic: "nivel básico",
+      proj_title: "Proyectos", soon: "Próximamente", proj_text: "Aquí aparecerán mis proyectos.",
+      contact_title: "Construyamos algo juntos.",
+      contact_text: "Si tienes un proyecto, una colaboración o una oportunidad en un estudio, escríbeme.",
+      tba: "por añadir",
+      tb_drawing: "Plano", tb_author: "Autor", tb_discipline: "Disciplina", tb_discipline_v: "Programación de videojuegos", tb_sheet: "Hoja"
+    }
+  };
+  var nodes = document.querySelectorAll('[data-i18n]');
+  var buttons = document.querySelectorAll('.lang button');
+
+  function setLang(lang) {
+    var t = dict[lang] || dict.en;
+    document.documentElement.lang = lang;
+    nodes.forEach(function (el) {
+      var v = t[el.getAttribute('data-i18n')];
+      if (v != null) el.textContent = v;
     });
-    empty.hidden = shown !== 0;
+    document.title = t.title;
     buttons.forEach(function (b) {
-      b.setAttribute('aria-pressed', String(b.getAttribute('data-filter') === filter));
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
     });
+    try { localStorage.setItem('lang', lang); } catch (e) {}
   }
   buttons.forEach(function (b) {
-    b.addEventListener('click', function () { apply(b.getAttribute('data-filter')); });
+    b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
   });
+  var saved = 'en';
+  try { saved = localStorage.getItem('lang') || 'en'; } catch (e) {}
+  setLang(saved === 'es' ? 'es' : 'en');
+
+  /* Marca en la columna lateral la sección visible */
+  var links = document.querySelectorAll('.rail nav a');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) {
+          a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + e.target.id));
+        });
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    document.querySelectorAll('.content > main > section').forEach(function (s) { io.observe(s); });
+  }
 })();
 </script>
 </body>
