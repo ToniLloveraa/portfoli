@@ -1,6 +1,7 @@
 COPIA AQUÍ TUS IMÁGENES (de static/ en tu proyecto Hugo):
 
   favicon.png
+  assets/CV.pdf   (tu currículum, el botón 'Descargar CV' lo usa)
   images/toni.jpg
   images/toni_about.gif
   images/icons/itchio.svg
