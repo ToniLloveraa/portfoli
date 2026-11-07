@@ -21,6 +21,12 @@ function el(tag, props = {}, ...kids) {
   kids.forEach(k => n.append(k));
   return n;
 }
+// Acepta watch?v=, youtu.be/, shorts/ o embed/ y devuelve la URL embebible
+function toEmbed(url) {
+  if (!url) return "";
+  const m = url.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/);
+  return m ? `https://www.youtube.com/embed/${m[1]}` : url;
+}
 document.getElementById("brand").textContent = SITE.name;
 const slug = new URLSearchParams(location.search).get("p");
 const p = SITE.projects.find(x => x.slug === slug);
@@ -36,7 +42,9 @@ if (!p) {
   if (p.highlights?.length) root.append(el("h2", {}, "Mi trabajo"), el("ul", {}, ...p.highlights.map(h => el("li", {}, h))));
   if (p.links?.length) root.append(el("div", {class:"btns"}, ...p.links.map(l => el("a", {class:"btn", href:l.url, target:"_blank", rel:"noopener"}, l.label))));
   const media = el("div", {class:"media"});
-  if (p.video) media.append(el("iframe", {src:p.video, title:p.title, allowfullscreen:"", loading:"lazy"}));
+  const embed = toEmbed(p.video);
+  if (embed) media.append(el("iframe", {src:embed, title:p.title, allowfullscreen:"", loading:"lazy",
+    allow:"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", referrerpolicy:"strict-origin-when-cross-origin"}));
   (p.images || []).forEach(src => media.append(el("img", {src, alt:p.title, loading:"lazy"})));
   if (media.children.length) root.append(media);
 }
