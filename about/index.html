@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio de estudiante de videojuegos en CITM - 3er año">
+    <title>Sobre Mí - Portafolio - Estudiante Videojuegos CITM</title>
+    <link rel="stylesheet" href="../css/main.min.css">
+    <link rel="icon" href="../favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".project-card");
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1 });
+        cards.forEach(card => observer.observe(card));
+      });
+    </script>
+</head>
+<body>
+<header class="header">
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../" class="nav-logo"><span class="logo-text">Toni Llovera Roca</span></a>
+      <div class="nav-menu" id="nav-menu">
+        <a href="../" class="nav-link">Inicio</a>
+        <a href="../about/" class="nav-link active">Sobre Mí</a>
+        <a href="../projects/" class="nav-link">Proyectos</a>
+        <a href="../contact/" class="nav-link">Contacto</a>
+      </div>
+      <div class="nav-toggle" id="nav-toggle" role="button" tabindex="0" aria-label="Abrir menú">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+<article class="single-page">
+  <div class="container">
+    <header class="page-header"><h1 class="page-title">Sobre Mí</h1></header>
+    <div class="page-content">
+<p>Hola. Soy un estudiante apasionado por el desarrollo de videojuegos, actualmente cursando mi tercer año en <strong>CITM</strong> (Centro de la Imagen y la Tecnología Multimedia). Me interesa crear experiencias interactivas y explorar nuevas tecnologías para videojuegos.</p>
+<h2>Mi Formación</h2>
+<div class="grid-cards">
+  <div class="card"><strong>Gameplay Programming</strong><p>Mecánicas, sistemas y lógica de juego.</p></div>
+  <div class="card"><strong>Diseño de Sistemas</strong><p>Arquitectura y patrones aplicados a videojuegos.</p></div>
+  <div class="card"><strong>Herramientas de Desarrollo</strong><p>Creación de herramientas que optimizan el flujo de trabajo.</p></div>
+</div>
+<h2>Tecnologías</h2>
+<h3>Lenguajes de Programación</h3>
+<ul>
+<li><strong>C++</strong>: desarrollo de bajo nivel y motores.</li>
+<li><strong>C#</strong>: proyectos en Unity.</li>
+</ul>
+<h3>Engines y Herramientas</h3>
+<ul>
+<li><strong>Unity</strong>: juegos 2D y 3D.</li>
+<li><strong>Unreal Engine</strong>: proyectos de gran escala y visualización.</li>
+<li><strong>Git/GitHub</strong>: control de versiones y colaboración.</li>
+</ul>
+<h2>Experiencia Académica</h2>
+<p>Durante mis estudios he trabajado en proyectos como:</p>
+<ul>
+<li>Juegos 2D con mecánicas originales.</li>
+<li>Prototipos 3D con física y animaciones.</li>
+<li>Herramientas internas para facilitar el desarrollo.</li>
+<li>Colaboración con perfiles de arte, diseño y producción.</li>
+</ul>
+<h2>Objetivos</h2>
+<p>Aspiro a convertirme en un desarrollador completo capaz de aportar tanto en proyectos indie como AAA. Me interesan especialmente:</p>
+<ul>
+<li>Experiencias VR</li>
+<li>Mecánicas innovadoras y diseño sistémico</li>
+<li>Experiencias de usuario inmersivas y memorables</li>
+</ul>
+<h2>Más Allá de los Videojuegos</h2>
+<p>Cuando no estoy programando disfruto:</p>
+<ul>
+<li>Jugar y analizar videojuegos</li>
+<li>Probar nuevas tecnologías</li>
+<li>Participar en game jams</li>
+<li>Viajar para buscar inspiración</li>
+</ul>
+<style>
+.grid-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin-bottom:2rem}
+.card{background-color:#f9fafc;border-radius:12px;padding:1.5rem;box-shadow:0 2px 10px rgba(0,0,0,.08);transition:transform .3s ease,box-shadow .3s ease,background-color .3s ease;cursor:default}
+.card:hover{transform:translateY(-6px);box-shadow:0 8px 20px rgba(0,0,0,.12);background-color:#fff}
+.card p{margin-bottom:0}
+</style>
+    </div>
+  </div>
+</article>
+</main>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Toni Llovera Roca</h3>
+        <p>Estudiante de Videojuegos en CITM - 3er año</p>
+        <p>Apasionado por el desarrollo de juegos y la programación</p>
+      </div>
+      <div class="footer-section">
+        <h4>Enlaces</h4>
+        <ul class="footer-links">
+          <li><a href="../">Inicio</a></li>
+          <li><a href="../about/">Sobre Mí</a></li>
+          <li><a href="../projects/">Proyectos</a></li>
+          <li><a href="../contact/">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <div class="social-links">
+          <a href="mailto:toni.llovera.roca@gmail.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://github.com/ToniLloveraRoca" class="social-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/tonilloveraroca/" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://tonillovera.itch.io/" class="social-link" target="_blank" rel="noopener" aria-label="Itch.io"><img src="../images/icons/itchio.svg" alt="Itch.io" style="width:20px;height:20px;"></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2025 Toni Llovera Roca. Todos los derechos reservados.</p></div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

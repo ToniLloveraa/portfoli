@@ -1,110 +1,161 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio de estudiante de videojuegos en CITM - 3er año">
+    <title>Portafolio - Estudiante Videojuegos CITM</title>
+    <link rel="stylesheet" href="./css/main.min.css">
+    <link rel="icon" href="./favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".project-card");
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1 });
+        cards.forEach(card => observer.observe(card));
+      });
+    </script>
 </head>
 <body>
-<header><div class="wrap">
-  <a class="brand" href="#home" id="brand"></a>
-  <nav>
-    <a href="#home">Home</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
-  </nav>
-  <div class="icons" id="icons"></div>
-</div></header>
-
-<main>
-<div class="wrap" id="home">
-  <div class="hero">
-    <div>
-      <p class="hi">Hi, I'm</p>
-      <h1 id="name"></h1>
-      <p class="role" id="role"></p>
-      <p class="intro" id="intro"></p>
-      <div class="btns">
-        <a class="btn primary" id="cv" download>Download CV</a>
-        <a class="btn" href="#projects">Projects</a>
+<header class="header">
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="./" class="nav-logo"><span class="logo-text">Toni Llovera Roca</span></a>
+      <div class="nav-menu" id="nav-menu">
+        <a href="./" class="nav-link active">Inicio</a>
+        <a href="./about/" class="nav-link">Sobre Mí</a>
+        <a href="./projects/" class="nav-link">Proyectos</a>
+        <a href="./contact/" class="nav-link">Contacto</a>
+      </div>
+      <div class="nav-toggle" id="nav-toggle" role="button" tabindex="0" aria-label="Abrir menú">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </div>
     </div>
-    <div id="avatar"></div>
-  </div>
-  <div class="stats" id="stats"></div>
-</div>
+  </nav>
+</header>
 
-<section id="experience"><div class="wrap"><h2>Experience</h2><div class="timeline" id="timeline"></div></div></section>
-<section id="skills"><div class="wrap"><h2>Skills</h2><div id="skillList"></div></div></section>
-<section id="projects"><div class="wrap"><h2>Projects</h2><div class="grid" id="projectGrid"></div></div></section>
+<main>
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1 class="hero-title">Toni Llovera Roca</h1>
+            <p class="hero-subtitle">Estudiante de Videojuegos en CITM</p>
+            <p class="hero-description">Desarrollador de juegos apasionado por crear experiencias interactivas únicas. Actualmente cursando 3er año en el Centro de la Imagen y la Tecnología Multimedia.</p>
+            <div class="hero-buttons">
+                <a href="./projects/" class="btn btn-primary">Ver Proyectos</a>
+                <a href="./contact/" class="btn btn-secondary">Contactar</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-avatar"><img src="./images/toni.jpg" alt="Toni Llovera Roca" class="avatar-img"></div>
+        </div>
+    </div>
+</section>
+
+<section class="about-preview">
+    <div class="container">
+        <h2>Sobre Mí</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <div class="about-photo"><img src="./images/toni_about.gif" alt="Toni Llovera" class="about-img-rect"></div>
+                <p>Soy un estudiante apasionado por el desarrollo de videojuegos, actualmente en mi tercer año en CITM (Centro de la Imagen y la Tecnología Multimedia). Me especializo en programación de gameplay, diseño de sistemas y desarrollo de herramientas.</p>
+                <a href="./about/" class="btn btn-outline">Conocer más</a>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-item"><i class="fas fa-code"></i><h4>Programación</h4><p>C++, C#, Unity, Unreal</p></div>
+                <div class="skill-item"><i class="fas fa-palette"></i><h4>Diseño</h4><p>Game Design, Level Design, UI/UX</p></div>
+                <div class="skill-item"><i class="fas fa-tools"></i><h4>Herramientas</h4><p>GitHub, Tiled, Jira</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="projects-preview">
+    <div class="container">
+        <h2>Proyectos Destacados</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <a href="./projects/dune-engine/" class="project-image">
+                    <img src="./images/projects/dune-engine.jpg" alt="Dune Engine" class="project-img">
+                </a>
+                <div class="project-content">
+                    <h3><a href="./projects/dune-engine/">Dune Engine</a></h3>
+                    <p>Motor de juego desarrollado desde cero utilizando SDL3 y OpenGL.</p>
+                    <div class="project-tags">
+            <span class="tag">SDL3</span>
+            <span class="tag">OpenGL</span>
+            <span class="tag">C++</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <a href="./projects/granotago/" class="project-image">
+                    <img src="./images/projects/granotago.png" alt="GranotaGo" class="project-img">
+                </a>
+                <div class="project-content">
+                    <h3><a href="./projects/granotago/">GranotaGo</a></h3>
+                    <p>Juego desarrollado para participar en los Premis Ludi organizados por 3Cat.</p>
+                    <div class="project-tags">
+            <span class="tag">Unity</span>
+            <span class="tag">C#</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <a href="./projects/the-apprentice/" class="project-image">
+                    <img src="./images/projects/the-apprentice.png" alt="The Apprentice" class="project-img">
+                </a>
+                <div class="project-content">
+                    <h3><a href="./projects/the-apprentice/">The Apprentice</a></h3>
+                    <p>Juego desarrollado en SDL2 en colaboración con estudiantes del grado de Arte.</p>
+                    <div class="project-tags">
+            <span class="tag">SDL2</span>
+            <span class="tag">C++</span>
+            <span class="tag">Tiled</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="projects-cta"><a href="./projects/" class="btn btn-primary">Ver Todos los Proyectos</a></div>
+    </div>
+</section>
 </main>
 
-<footer><div class="wrap">
-  <span>© Developer Portfolio by <a id="footName" href="#"></a></span>
-  <span class="gh" id="gh"></span>
-</div></footer>
-
-<script src="data.js"></script>
-<script>
-const $ = id => document.getElementById(id);
-function el(tag, props = {}, ...kids) {
-  const n = document.createElement(tag);
-  for (const [k, v] of Object.entries(props)) k === "class" ? n.className = v : n.setAttribute(k, v);
-  kids.forEach(k => n.append(k));
-  return n;
-}
-const tags = list => el("div", {class:"tags"}, ...(list||[]).map(t => el("span", {class:"tag"}, t)));
-const ICONS = {
-  github:'<svg viewBox="0 0 24 24"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>',
-  linkedin:'<svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>'
-};
-
-document.title = `${SITE.name} | ${SITE.role}`;
-$("brand").textContent = SITE.name;
-$("name").textContent = SITE.name;
-$("role").textContent = SITE.role;
-$("intro").textContent = SITE.intro;
-$("cv").href = SITE.cv;
-$("footName").textContent = SITE.name;
-$("footName").href = SITE.github;
-
-// iconos
-[["github", SITE.github], ["linkedin", SITE.linkedin]].forEach(([k, url]) => {
-  if (!url) return;
-  const a = el("a", {href:url, target:"_blank", rel:"noopener", "aria-label":k});
-  a.innerHTML = ICONS[k];
-  $("icons").append(a);
-});
-
-// avatar
-if (SITE.photo) $("avatar").append(el("img", {class:"avatar", src:SITE.photo, alt:SITE.name}));
-else $("avatar").append(el("div", {class:"avatar", "aria-hidden":"true"}, SITE.name.split(" ").map(w => w[0]).slice(0,2).join("")));
-
-// stats
-SITE.stats.forEach(s => $("stats").append(el("div", {class:"stat"}, el("span", {}, s.title), el("strong", {}, s.value))));
-
-// experiencia
-SITE.experience.forEach(j => {
-  const co = j.companyUrl ? el("a", {class:"co", href:j.companyUrl, target:"_blank", rel:"noopener"}, j.company) : el("span", {class:"co"}, j.company);
-  const job = el("article", {class:"job"}, el("time", {}, j.dates), el("h3", {}, j.title), co, el("p", {}, j.description), tags(j.tags));
-  if (j.link) job.append(el("div", {class:"links"}, el("a", {href:j.link.url, target:"_blank", rel:"noopener"}, j.link.label)));
-  $("timeline").append(job);
-});
-
-// skills
-SITE.skills.forEach(g => $("skillList").append(el("div", {class:"skill-group"}, el("h3", {}, g.group), tags(g.items))));
-
-// proyectos
-SITE.projects.forEach(p => $("projectGrid").append(
-  el("a", {class:"card", href:`project.html?p=${encodeURIComponent(p.slug)}`}, el("h3", {}, p.title), el("p", {}, p.summary), tags(p.tags))
-));
-
-// footer GitHub
-if (SITE.repo) {
-  $("gh").append(el("a", {href:SITE.repo, target:"_blank", rel:"noopener"}, "STAR"), el("a", {href:SITE.repo + "/fork", target:"_blank", rel:"noopener"}, "FORK"));
-}
-</script>
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Toni Llovera Roca</h3>
+        <p>Estudiante de Videojuegos en CITM - 3er año</p>
+        <p>Apasionado por el desarrollo de juegos y la programación</p>
+      </div>
+      <div class="footer-section">
+        <h4>Enlaces</h4>
+        <ul class="footer-links">
+          <li><a href="./">Inicio</a></li>
+          <li><a href="./about/">Sobre Mí</a></li>
+          <li><a href="./projects/">Proyectos</a></li>
+          <li><a href="./contact/">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <div class="social-links">
+          <a href="mailto:toni.llovera.roca@gmail.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://github.com/ToniLloveraRoca" class="social-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/tonilloveraroca/" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://tonillovera.itch.io/" class="social-link" target="_blank" rel="noopener" aria-label="Itch.io"><img src="./images/icons/itchio.svg" alt="Itch.io" style="width:20px;height:20px;"></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2025 Toni Llovera Roca. Todos los derechos reservados.</p></div>
+  </div>
+</footer>
+<script src="./js/main.js"></script>
 </body>
 </html>

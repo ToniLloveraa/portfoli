@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio de estudiante de videojuegos en CITM - 3er año">
+    <title>Contacto - Portafolio - Estudiante Videojuegos CITM</title>
+    <link rel="stylesheet" href="../css/main.min.css">
+    <link rel="icon" href="../favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".project-card");
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1 });
+        cards.forEach(card => observer.observe(card));
+      });
+    </script>
+</head>
+<body>
+<header class="header">
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../" class="nav-logo"><span class="logo-text">Toni Llovera Roca</span></a>
+      <div class="nav-menu" id="nav-menu">
+        <a href="../" class="nav-link">Inicio</a>
+        <a href="../about/" class="nav-link">Sobre Mí</a>
+        <a href="../projects/" class="nav-link">Proyectos</a>
+        <a href="../contact/" class="nav-link active">Contacto</a>
+      </div>
+      <div class="nav-toggle" id="nav-toggle" role="button" tabindex="0" aria-label="Abrir menú">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+<article class="single-page">
+  <div class="container">
+    <header class="page-header"><h1 class="page-title">Contacto</h1></header>
+    <div class="page-content">
+<p style="text-align:center; margin-top:-30px;">Si deseas colaborar, tienes una propuesta profesional o simplemente quieres hablar sobre desarrollo de videojuegos, estaré encantado de escucharte.</p>
+<h2>Información de contacto</h2>
+<p><strong>Email:</strong> <a href="mailto:toni.llovera.roca@gmail.com">toni.llovera.roca@gmail.com</a><br>
+<strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/tonilloveraroca/" target="_blank" rel="noopener">linkedin.com/in/tonilloveraroca</a><br>
+<strong>GitHub:</strong> <a href="https://github.com/ToniLloveraRoca/" target="_blank" rel="noopener">github.com/ToniLloveraRoca</a><br>
+<strong>Itch.io:</strong> <a href="https://tonillovera.itch.io/" target="_blank" rel="noopener">tonillovera.itch.io</a></p>
+<h2>Disponibilidad</h2>
+<p>Actualmente estoy:</p>
+<ul>
+<li>Disponible para colaboraciones y proyectos académicos o independientes</li>
+<li>Abierto a oportunidades de prácticas en el sector</li>
+<li>Activo en game jams y proyectos experimentales</li>
+</ul>
+<h2>Ubicación</h2>
+<p><strong>Barcelona, España</strong><br>Estudiante en el Centro de la Imagen y la Tecnología Multimedia (CITM)</p>
+<hr>
+<p><em>Me encantará saber de ti pronto.</em></p>
+    </div>
+  </div>
+</article>
+</main>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Toni Llovera Roca</h3>
+        <p>Estudiante de Videojuegos en CITM - 3er año</p>
+        <p>Apasionado por el desarrollo de juegos y la programación</p>
+      </div>
+      <div class="footer-section">
+        <h4>Enlaces</h4>
+        <ul class="footer-links">
+          <li><a href="../">Inicio</a></li>
+          <li><a href="../about/">Sobre Mí</a></li>
+          <li><a href="../projects/">Proyectos</a></li>
+          <li><a href="../contact/">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <div class="social-links">
+          <a href="mailto:toni.llovera.roca@gmail.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://github.com/ToniLloveraRoca" class="social-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/tonilloveraroca/" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://tonillovera.itch.io/" class="social-link" target="_blank" rel="noopener" aria-label="Itch.io"><img src="../images/icons/itchio.svg" alt="Itch.io" style="width:20px;height:20px;"></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2025 Toni Llovera Roca. Todos los derechos reservados.</p></div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

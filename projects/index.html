@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio de estudiante de videojuegos en CITM - 3er año">
+    <title>Proyectos - Portafolio - Estudiante Videojuegos CITM</title>
+    <link rel="stylesheet" href="../css/main.min.css">
+    <link rel="icon" href="../favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".project-card");
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }
+          });
+        }, { threshold: 0.1 });
+        cards.forEach(card => observer.observe(card));
+      });
+    </script>
+</head>
+<body>
+<header class="header">
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../" class="nav-logo"><span class="logo-text">Toni Llovera Roca</span></a>
+      <div class="nav-menu" id="nav-menu">
+        <a href="../" class="nav-link">Inicio</a>
+        <a href="../about/" class="nav-link">Sobre Mí</a>
+        <a href="../projects/" class="nav-link active">Proyectos</a>
+        <a href="../contact/" class="nav-link">Contacto</a>
+      </div>
+      <div class="nav-toggle" id="nav-toggle" role="button" tabindex="0" aria-label="Abrir menú">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="list-page">
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-title">Proyectos</h1>
+      <p>Bienvenido a mi colección de proyectos. Aquí podrás explorar los trabajos que he desarrollado a lo largo de mi formación, con detalles, imágenes y características de cada uno.</p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <a href="../projects/dune-engine/" class="project-image">
+          <img src="../images/projects/dune-engine.jpg" alt="Dune Engine" class="project-img">
+        </a>
+        <div class="project-content">
+          <h3><a href="../projects/dune-engine/">Dune Engine</a></h3>
+          <p>Motor de juego desarrollado desde cero utilizando SDL3 y OpenGL.</p>
+          <div class="project-tags">
+            <span class="tag">C++</span>
+            <span class="tag">OpenGL</span>
+            <span class="tag">SDL3</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <a href="../projects/granotago/" class="project-image">
+          <img src="../images/projects/granotago.png" alt="GranotaGo" class="project-img">
+        </a>
+        <div class="project-content">
+          <h3><a href="../projects/granotago/">GranotaGo</a></h3>
+          <p>Juego desarrollado para los Premis Ludi de 3Cat. Controla una rana aventurera en una experiencia 2D.</p>
+          <div class="project-tags">
+            <span class="tag">Unity</span>
+            <span class="tag">C#</span>
+            <span class="tag">GameJam</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <a href="../projects/the-apprentice/" class="project-image">
+          <img src="../images/projects/the-apprentice-title.png" alt="The Apprentice" class="project-img">
+        </a>
+        <div class="project-content">
+          <h3><a href="../projects/the-apprentice/">The Apprentice</a></h3>
+          <p>Juego 2D de plataformas creado en SDL2 junto a estudiantes de arte digital.</p>
+          <div class="project-tags">
+            <span class="tag">SDL2</span>
+            <span class="tag">C++</span>
+            <span class="tag">Tiled</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <a href="../projects/need-for-beer/" class="project-image">
+          <img src="../images/projects/need-for-beer.png" alt="Need For Beer" class="project-img">
+        </a>
+        <div class="project-content">
+          <h3><a href="../projects/need-for-beer/">Need For Beer</a></h3>
+          <p>Juego de carreras basado en física, desarrollado en equipo como proyecto de aprendizaje.</p>
+          <div class="project-tags">
+            <span class="tag">C++</span>
+            <span class="tag">Física</span>
+            <span class="tag">Juego de Carreras</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Toni Llovera Roca</h3>
+        <p>Estudiante de Videojuegos en CITM - 3er año</p>
+        <p>Apasionado por el desarrollo de juegos y la programación</p>
+      </div>
+      <div class="footer-section">
+        <h4>Enlaces</h4>
+        <ul class="footer-links">
+          <li><a href="../">Inicio</a></li>
+          <li><a href="../about/">Sobre Mí</a></li>
+          <li><a href="../projects/">Proyectos</a></li>
+          <li><a href="../contact/">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <div class="social-links">
+          <a href="mailto:toni.llovera.roca@gmail.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://github.com/ToniLloveraRoca" class="social-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/tonilloveraroca/" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://tonillovera.itch.io/" class="social-link" target="_blank" rel="noopener" aria-label="Itch.io"><img src="../images/icons/itchio.svg" alt="Itch.io" style="width:20px;height:20px;"></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2025 Toni Llovera Roca. Todos los derechos reservados.</p></div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

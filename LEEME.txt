@@ -1,0 +1,10 @@
+COPIA AQUÍ TUS IMÁGENES (de static/ en tu proyecto Hugo):
+
+  favicon.png
+  images/toni.jpg
+  images/toni_about.gif
+  images/icons/itchio.svg
+  images/projects/  (todas las imágenes de proyectos)
+
+Después sube TODO el contenido de esta carpeta a la raíz de tu repo y activa
+Settings > Pages > Deploy from a branch > main / (root).
