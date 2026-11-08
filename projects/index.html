@@ -1,183 +1,67 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portafolio de estudiante de videojuegos en CITM - 4º año">
-    <title>Proyectos - Portafolio - Estudiante Videojuegos CITM</title>
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="icon" href="../favicon.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio of Toni Llovera Roca, video game student at CITM - 4th year"><title>Toni Llovera Roca | Video Game Student</title>
+<link rel="icon" href="../favicon.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="../css/style.css">
+<style>.mono{font:800 1.3rem var(--display)!important;font-style:normal;background:var(--bg);border-radius:10px}</style>
 </head>
 <body>
-<header class="header">
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="../" class="nav-logo"><span class="logo-text">Toni Llovera Roca</span></a>
-      <div class="nav-menu" id="nav-menu">
-        <a href="../" class="nav-link">Inicio</a>
-        <a href="../about/" class="nav-link">Sobre Mí</a>
-        <a href="../projects/" class="nav-link active">Proyectos</a>
-        <a href="../contact/" class="nav-link">Contacto</a>
-      </div>
-      <div class="lang-switch" role="navigation" aria-label="Language"><a href="../projects/" hreflang="es" lang="es" aria-current="true">ES</a><a href="../ca/projects/" hreflang="ca" lang="ca">CA</a><a href="../en/projects/" hreflang="en" lang="en">EN</a></div>
-      <div class="nav-toggle" id="nav-toggle" role="button" tabindex="0" aria-label="Abrir menú">
-        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-      </div>
-    </div>
-  </nav>
-</header>
-
-<main>
-<section class="list-page">
-  <div class="container">
-    <div class="page-header">
-      <h1 class="page-title">Proyectos</h1>
-      <p>Bienvenido a mi colección de proyectos. Aquí podrás explorar los trabajos que he desarrollado a lo largo de mi formación, con detalles, imágenes y características de cada uno.</p>
-    </div>
-    <div class="projects-grid">
-      <div class="project-card">
-        <a href="../projects/estik/" class="project-image">
-          <img src="../images/projects/Estik0.png" alt="Estik" class="project-img">
-        </a>
-        <div class="project-content">
-          <h3><a href="../projects/estik/">Estik</a></h3>
-          <p>Videojuego de acción y habilidad inspirado en el hockey sobre hierba: guía la pelota hasta la portería superando obstáculos.</p>
-          
-          <div class="project-tags">
-            <span class="tag">Acción</span>
-            <span class="tag">Habilidad</span>
-            <span class="tag">Premis Ludi 2026</span>
-          </div>
-        </div>
-      </div>
-      <div class="project-card">
-        <a href="../projects/odossea/" class="project-image">
-          <img src="../images/projects/odossea.png" alt="Odossea" class="project-img">
-        </a>
-        <div class="project-content">
-          <h3><a href="../projects/odossea/">Odossea</a></h3>
-          <p>Juego cooperativo para 2 jugadores: lanza y comparte masa para resolver puzles y superar plataformas juntos.</p>
-          <p class="award"><i class="fas fa-trophy"></i> Premiado en la 9ª Gran CITM GameJam</p>
-          <div class="project-tags">
-            <span class="tag">Plataformas</span>
-            <span class="tag">Puzles</span>
-            <span class="tag">Cooperativo</span>
-            <span class="tag">Game Jam</span>
-          </div>
-        </div>
-      </div>
-      <div class="project-card">
-        <a href="../projects/son-of-ithaca/" class="project-image">
-          <img src="../images/projects/SOI0.png" alt="Son Of Ithaca" class="project-img">
-        </a>
-        <div class="project-content">
-          <h3><a href="../projects/son-of-ithaca/">Son Of Ithaca</a></h3>
-          <p>Action-adventure 3D basado en La Odisea: controlas a Telémaco en busca de su padre, Odiseo.</p>
-          
-          <div class="project-tags">
-            <span class="tag">Acción-Aventura</span>
-            <span class="tag">3D</span>
-            <span class="tag">Trabajo en equipo</span>
-          </div>
-        </div>
-      </div>
-      <div class="project-card">
-        <a href="../projects/dune-engine/" class="project-image">
-          <img src="../images/projects/dune-engine.jpg" alt="Dune Engine" class="project-img">
-        </a>
-        <div class="project-content">
-          <h3><a href="../projects/dune-engine/">Dune Engine</a></h3>
-          <p>Motor de juego desarrollado desde cero utilizando SDL3 y OpenGL.</p>
-          
-          <div class="project-tags">
-            <span class="tag">C++</span>
-            <span class="tag">OpenGL</span>
-            <span class="tag">SDL3</span>
-          </div>
-        </div>
-      </div>
-      <div class="project-card">
-        <a href="../projects/granotago/" class="project-image">
-          <img src="../images/projects/granotago.png" alt="GranotaGo" class="project-img">
-        </a>
-        <div class="project-content">
-          <h3><a href="../projects/granotago/">GranotaGo</a></h3>
-          <p>Juego desarrollado para los Premis Ludi de 3Cat. Controla una rana aventurera en una experiencia 2D.</p>
-          
-          <div class="project-tags">
-            <span class="tag">Unity</span>
-            <span class="tag">C#</span>
-            <span class="tag">GameJam</span>
-          </div>
-        </div>
-      </div>
-      <div class="project-card">
-        <a href="../projects/the-apprentice/" class="project-image">
-          <img src="../images/projects/the-apprentice-title.png" alt="The Apprentice" class="project-img">
-        </a>
-        <div class="project-content">
-          <h3><a href="../projects/the-apprentice/">The Apprentice</a></h3>
-          <p>Juego 2D de plataformas creado en SDL2 junto a estudiantes de arte digital.</p>
-          
-          <div class="project-tags">
-            <span class="tag">SDL2</span>
-            <span class="tag">C++</span>
-            <span class="tag">Tiled</span>
-          </div>
-        </div>
-      </div>
-      <div class="project-card">
-        <a href="../projects/need-for-beer/" class="project-image">
-          <img src="../images/projects/need-for-beer.png" alt="Need For Beer" class="project-img">
-        </a>
-        <div class="project-content">
-          <h3><a href="../projects/need-for-beer/">Need For Beer</a></h3>
-          <p>Juego de carreras basado en física, desarrollado en equipo como proyecto de aprendizaje.</p>
-          
-          <div class="project-tags">
-            <span class="tag">C++</span>
-            <span class="tag">Física</span>
-            <span class="tag">Juego de Carreras</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<header class="top"><div class="wrap"><a class="brand" href="#top">Toni Llovera Roca</a>
+<nav><a href="#skills">Skills & Tools</a><a href="#projects">Projects</a><a href="#contact">Shall we collaborate</a></nav>
+<div class="lang-switch" role="navigation" aria-label="Language"><a href="../" hreflang="es" lang="es">ES</a><a href="../ca/" hreflang="ca" lang="ca">CA</a><a href="../en/" hreflang="en" lang="en" aria-current="true">EN</a></div></div></header>
+<main class="wrap" id="top">
+<section class="hero">
+  <div><h1>Hi! I'm Toni</h1><p class="bio">Video Game student at CITM, now in my 4th year. I specialize in <b>gameplay programming</b>, <b>systems design</b> and <b>tool development</b>. On the technical side I work with <b>C++ and C#</b>, in <b>Unity and Unreal Engine</b>, and in team projects I also handle <b>UI programming</b> and <b>technical art</b>.</p>
+  <div class="info"><div><span>Location:</span>Barcelona, Spain</div><div><span>Status:</span>Open to internships</div><div><span>Studies:</span>Video Games at CITM · 4th year</div></div>
+  <div class="actions"><a class="btn" href="mailto:toni.llovera.roca@gmail.com"><i class="far fa-envelope"></i> toni.llovera.roca@gmail.com</a>
+  <a class="btn amber" href="../assets/CV.pdf" download><i class="fas fa-download"></i> Download CV</a><div class="socials"><a href="https://github.com/ToniLloveraRoca" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a><a href="https://www.linkedin.com/in/tonilloveraroca/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a><a href="https://tonillovera.itch.io/" target="_blank" rel="noopener" aria-label="itch.io"><i class="fab fa-itch-io"></i></a></div></div></div>
+  <div class="photo"><span>TL</span><img src="../images/toni.jpg" alt="Toni Llovera Roca" onerror="this.remove()"></div>
 </section>
+<section id="skills"><div class="sec-title"><h2>Skills & Tools</h2></div><div class="marquee"><div class="track"><div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/cplusplus/cplusplus-original.svg" alt="" loading="lazy" onerror="this.outerHTML='<i class=&quot;mono&quot;>C+</i>'"><span>C++</span></div><div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/csharp/csharp-original.svg" alt="" loading="lazy" onerror="this.outerHTML='<i class=&quot;mono&quot;>C#</i>'"><span>C#</span></div><div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/unity/unity-original.svg" alt="" loading="lazy" onerror="this.outerHTML='<i class=&quot;mono&quot;>Un</i>'"><span>Unity</span></div><div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/unrealengine/unrealengine-original.svg" alt="" loading="lazy" onerror="this.outerHTML='<i class=&quot;mono&quot;>Un</i>'"><span>Unreal Engine</span></div><div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/visualstudio/visualstudio-plain.svg" alt="" loading="lazy" onerror="this.outerHTML='<i class=&quot;mono&quot;>Vi</i>'"><span>Visual Studio</span></div><div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/git/git-original.svg" alt="" loading="lazy" onerror="this.outerHTML='<i class=&quot;mono&quot;>Gi</i>'"><span>Git</span></div><div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/github/github-original.svg" alt="" loading="lazy" onerror="this.outerHTML='<i class=&quot;mono&quot;>Gi</i>'"><span>GitHub</span></div><div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/jira/jira-original.svg" alt="" loading="lazy" onerror="this.outerHTML='<i class=&quot;mono&quot;>Ji</i>'"><span>Jira</span></div><div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/opengl/opengl-original.svg" alt="" loading="lazy" onerror="this.outerHTML='<i class=&quot;mono&quot;>Op</i>'"><span>OpenGL</span></div><div class="skill"><i class="mono">SDL</i><span>SDL</span></div><div class="skill"><i class="mono">Til</i><span>Tiled</span></div><div class="skill"><i class="fas fa-gamepad"></i><span>Game Design</span></div><div class="skill"><i class="fas fa-map"></i><span>Level Design</span></div><div class="skill"><i class="fas fa-object-group"></i><span>UI/UX</span></div><div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/cplusplus/cplusplus-original.svg" alt="" loading="lazy" onerror="this.outerHTML='<i class=&quot;mono&quot;>C+</i>'"><span>C++</span></div><div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/csharp/csharp-original.svg" alt="" loading="lazy" onerror="this.outerHTML='<i class=&quot;mono&quot;>C#</i>'"><span>C#</span></div><div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/unity/unity-original.svg" alt="" loading="lazy" onerror="this.outerHTML='<i class=&quot;mono&quot;>Un</i>'"><span>Unity</span></div><div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/unrealengine/unrealengine-original.svg" alt="" loading="lazy" onerror="this.outerHTML='<i class=&quot;mono&quot;>Un</i>'"><span>Unreal Engine</span></div><div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/visualstudio/visualstudio-plain.svg" alt="" loading="lazy" onerror="this.outerHTML='<i class=&quot;mono&quot;>Vi</i>'"><span>Visual Studio</span></div><div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/git/git-original.svg" alt="" loading="lazy" onerror="this.outerHTML='<i class=&quot;mono&quot;>Gi</i>'"><span>Git</span></div><div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/github/github-original.svg" alt="" loading="lazy" onerror="this.outerHTML='<i class=&quot;mono&quot;>Gi</i>'"><span>GitHub</span></div><div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/jira/jira-original.svg" alt="" loading="lazy" onerror="this.outerHTML='<i class=&quot;mono&quot;>Ji</i>'"><span>Jira</span></div><div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/opengl/opengl-original.svg" alt="" loading="lazy" onerror="this.outerHTML='<i class=&quot;mono&quot;>Op</i>'"><span>OpenGL</span></div><div class="skill"><i class="mono">SDL</i><span>SDL</span></div><div class="skill"><i class="mono">Til</i><span>Tiled</span></div><div class="skill"><i class="fas fa-gamepad"></i><span>Game Design</span></div><div class="skill"><i class="fas fa-map"></i><span>Level Design</span></div><div class="skill"><i class="fas fa-object-group"></i><span>UI/UX</span></div></div></div></section>
+<section id="projects"><div class="sec-title"><h2>Projects</h2></div><div class="grid">
+<article class="proj" id="estik"><div class="cover"><img src="../images/projects/estik.png" alt="Estik" loading="lazy" onerror="this.remove()"><span class="badge">GAME</span></div>
+  <div class="pbody"><h3>Estik</h3>
+    <p class="pcard">Action and skill video game inspired by field hockey: guide the ball to the goal while overcoming obstacles.</p><div class="tags"><span class="tag">Action</span><span class="tag">Skill</span><span class="tag">Premis Ludi 2026</span></div>
+    <details class="more"><summary><span class="when-closed">Learn more</span><span class="when-open">Show less</span> <i class="fas fa-chevron-down"></i></summary>
+      <div class="inner"><div class="video"><iframe data-src="https://www.youtube.com/embed/aGGM1yTLy6A" title="Estik" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div><div class="gallery"><img src="../images/projects/estik-1.png" alt="Estik" loading="lazy" onerror="this.remove()"><img src="../images/projects/estik-2.png" alt="Estik" loading="lazy" onerror="this.remove()"><img src="../images/projects/estik-3.png" alt="Estik" loading="lazy" onerror="this.remove()"><img src="../images/projects/estik-4.png" alt="Estik" loading="lazy" onerror="this.remove()"><img src="../images/projects/estik-5.png" alt="Estik" loading="lazy" onerror="this.remove()"><img src="../images/projects/estik-6.png" alt="Estik" loading="lazy" onerror="this.remove()"></div><p>Estik is an action and skill video game inspired by field hockey in which the player must complete a series of dynamic levels. The goal of each stage is to guide the ball to the goal, overcoming a wide variety of environmental obstacles and challenges that test the player's precision, trajectory calculation and mental agility. It was created for the Premis Ludi 2026 by 3Cat.</p><h4>Main features</h4><ul><li>Dynamic levels with environmental obstacles</li><li>Guide the ball to the goal</li><li>Tests precision and trajectory calculation</li></ul><h4>My work</h4><p>Four-person team project. My role was programmer, UI programmer and technical artist.</p><h4>Team</h4><ul><li><strong>Marc Blanquez Padilla</strong>: programmer, 3D artist and level designer (<a class="link" href="https://github.com/MarcBlanquezPadilla" target="_blank" rel="noopener">GitHub</a>)</li><li><strong>Martí Mira Vázquez</strong>: level designer, UI artist and 3D artist (<a class="link" href="https://github.com/algars15" target="_blank" rel="noopener">GitHub</a>)</li><li><strong>Oscar Alonso Camenforte</strong>: programmer, sound programmer and level designer (<a class="link" href="https://github.com/oscaralonsoo" target="_blank" rel="noopener">GitHub</a>)</li><li><strong>Toni Llovera Roca</strong>: programmer, UI programmer and technical artist (<a class="link" href="https://github.com/ToniLlovera" target="_blank" rel="noopener">GitHub</a>)</li></ul><a class="visit" href="https://oalonsoo.itch.io/estik" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> View on itch.io</a></div></details></div></article>
+<article class="proj" id="odossea"><div class="cover"><img src="../images/projects/odossea.png" alt="Odossea" loading="lazy" onerror="this.remove()"><span class="badge">GAME</span></div>
+  <div class="pbody"><h3>Odossea</h3><div class="award"><i class="fas fa-trophy"></i><div><strong>Socialpoint Best Technology Award</strong><span>9th Gran CITM Game Jam</span></div></div>
+    <p class="pcard">Co-op game for 2 players: throw and share mass to solve puzzles and clear platforms together.</p><div class="tags"><span class="tag">Platformer</span><span class="tag">Puzzle</span><span class="tag">Co-op</span><span class="tag">Game Jam</span></div>
+    <details class="more"><summary><span class="when-closed">Learn more</span><span class="when-open">Show less</span> <i class="fas fa-chevron-down"></i></summary>
+      <div class="inner"><div class="gallery"><img src="../images/projects/odossea-1.png" alt="Odossea" loading="lazy" onerror="this.remove()"><img src="../images/projects/odossea-2.png" alt="Odossea" loading="lazy" onerror="this.remove()"><img src="../images/projects/odossea-3.png" alt="Odossea" loading="lazy" onerror="this.remove()"><img src="../images/projects/odossea-4.png" alt="Odossea" loading="lazy" onerror="this.remove()"><img src="../images/projects/odossea-5.png" alt="Odossea" loading="lazy" onerror="this.remove()"><img src="../images/projects/odossea-6.png" alt="Odossea" loading="lazy" onerror="this.remove()"></div><p>Odossea is a cooperative platformer and puzzle game for two players. You throw and share mass to solve puzzles and clear platforms together: the characters can split up to work together on their odyssey. It is played with keyboard and mouse plus one gamepad, or with two gamepads.</p><h4>Main features</h4><ul><li>Local co-op multiplayer for 2 players</li><li>Throw-and-share-mass mechanic</li><li>Interactive tutorial</li><li>Gamepad support</li></ul><h4>My work</h4><p>Developed as a team by TorratsGames for the 9th Gran CITM GameJam (January–February 2026), organized by Delegació CITM UPC. It ranked #1 in Gameplay in the jam's voting.</p><a class="visit" href="https://torratsgames.itch.io/odossea" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> View on itch.io</a></div></details></div></article>
+<article class="proj" id="son-of-ithaca"><div class="cover"><img src="../images/projects/son-of-ithaca.png" alt="Son Of Ithaca" loading="lazy" onerror="this.remove()"><span class="badge">GAME</span></div>
+  <div class="pbody"><h3>Son Of Ithaca</h3><div class="award"><i class="fas fa-trophy"></i><div><strong>Nominee: Best Academic Game</strong><span>IndieDevDay · SAGA Game Fest 2026</span></div></div>
+    <p class="pcard">3D action-adventure based on The Odyssey: you play as Telemachus searching for his father, Odysseus.</p><div class="tags"><span class="tag">Action-Adventure</span><span class="tag">3D</span><span class="tag">Teamwork</span></div>
+    <details class="more"><summary><span class="when-closed">Learn more</span><span class="when-open">Show less</span> <i class="fas fa-chevron-down"></i></summary>
+      <div class="inner"><div class="video"><iframe data-src="https://www.youtube.com/embed/PYzuc0fsHpM" title="Son Of Ithaca" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div><div class="gallery"><img src="../images/projects/son-of-ithaca-1.png" alt="Son Of Ithaca" loading="lazy" onerror="this.remove()"><img src="../images/projects/son-of-ithaca-2.png" alt="Son Of Ithaca" loading="lazy" onerror="this.remove()"><img src="../images/projects/son-of-ithaca-3.png" alt="Son Of Ithaca" loading="lazy" onerror="this.remove()"><img src="../images/projects/son-of-ithaca-4.png" alt="Son Of Ithaca" loading="lazy" onerror="this.remove()"><img src="../images/projects/son-of-ithaca-5.png" alt="Son Of Ithaca" loading="lazy" onerror="this.remove()"><img src="../images/projects/son-of-ithaca-6.png" alt="Son Of Ithaca" loading="lazy" onerror="this.remove()"><img src="../images/projects/son-of-ithaca-7.png" alt="Son Of Ithaca" loading="lazy" onerror="this.remove()"><img src="../images/projects/son-of-ithaca-8.png" alt="Son Of Ithaca" loading="lazy" onerror="this.remove()"></div><p>Son of Ithaca is an action-adventure game based on The Odyssey, where you play as Telemachus searching for his father, Odysseus. With the help of Athena, goddess of wisdom, travel to a mysterious island and explore it to gain new powers from the gods in the form of equippable masks; then open the portal to the Underworld and face the final challenges.</p><h4>Main features</h4><ul><li>3D action-adventure based on The Odyssey</li><li>Equippable masks with the powers of the gods</li><li>Exploration of a mysterious island and a portal to the Underworld</li></ul><h4>My work</h4><p>Project developed as a team by Nobody Games Studio, with over 20 people. Free for Windows; roughly one hour long.</p><a class="visit" href="https://nobody-games-studio.itch.io/son-of-ithaca" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> View on itch.io</a></div></details></div></article>
+<article class="proj" id="dune-engine"><div class="cover"><img src="../images/projects/dune-engine.jpg" alt="Dune Engine" loading="lazy" onerror="this.remove()"><span class="badge">GAME</span></div>
+  <div class="pbody"><h3>Dune Engine</h3>
+    <p class="pcard">Game engine built from scratch using SDL3 and OpenGL.</p><div class="tags"><span class="tag">C++</span><span class="tag">OpenGL</span><span class="tag">SDL3</span></div>
+    <details class="more"><summary><span class="when-closed">Learn more</span><span class="when-open">Show less</span> <i class="fas fa-chevron-down"></i></summary>
+      <div class="inner"><div class="gallery"><img src="../images/projects/dune-engine-1.jpg" alt="Dune Engine" loading="lazy" onerror="this.remove()"><img src="../images/projects/dune-engine-2.jpg" alt="Dune Engine" loading="lazy" onerror="this.remove()"><img src="../images/projects/dune-engine-3.jpg" alt="Dune Engine" loading="lazy" onerror="this.remove()"></div><p>Dune Engine is a game engine developed in C++ with SDL3 and OpenGL, focused on learning engine architecture and efficient rendering.</p><h4>Main features</h4><ul><li>Modern OpenGL rendering system</li><li>Dynamic resource loading</li><li>Basic level editor</li></ul><h4>My work</h4><p>In this project I worked mainly on resource management and the entity system.</p><a class="visit" href="None" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> View on itch.io</a></div></details></div></article>
+<article class="proj" id="granotago"><div class="cover"><img src="../images/projects/granotago.png" alt="GranotaGo" loading="lazy" onerror="this.remove()"><span class="badge">GAME</span></div>
+  <div class="pbody"><h3>GranotaGo</h3>
+    <p class="pcard">Game made for 3Cat's Premis Ludi. Guide an adventurous frog in a 2D experience.</p><div class="tags"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">GameJam</span></div>
+    <details class="more"><summary><span class="when-closed">Learn more</span><span class="when-open">Show less</span> <i class="fas fa-chevron-down"></i></summary>
+      <div class="inner"><div class="gallery"><img src="../images/projects/granotago-1.png" alt="GranotaGo" loading="lazy" onerror="this.remove()"><img src="../images/projects/granotago-2.png" alt="GranotaGo" loading="lazy" onerror="this.remove()"><img src="../images/projects/granotago-3.png" alt="GranotaGo" loading="lazy" onerror="this.remove()"><img src="../images/projects/granotago-4.png" alt="GranotaGo" loading="lazy" onerror="this.remove()"><img src="../images/projects/granotago-5.png" alt="GranotaGo" loading="lazy" onerror="this.remove()"></div><p>GranotaGo is a casual, colorful game aimed at children aged 6 to 8 and developed in Unity, in which the player controls a frog that must move through dynamic scenes, avoiding obstacles and collecting points. It was created for 3Cat's Premis Ludi together with other CITM students.</p><h4>Main features</h4><ul><li>Drag &amp; drop mechanics</li><li>Colorful scenes</li><li>Scoring system</li></ul><h4>My work</h4><p>During development, I worked on programming the panel and block system. I was also in charge of testing, fixing and polishing the levels.<br>The project was presented at 3Cat's <strong>Premis Ludi</strong> and stood out for its look and smooth gameplay.</p><a class="visit" href="https://oalonsoo.itch.io/granotago" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> View on itch.io</a></div></details></div></article>
+<article class="proj" id="the-apprentice"><div class="cover"><img src="../images/projects/the-apprentice-title.png" alt="The Apprentice" loading="lazy" onerror="this.remove()"><span class="badge">GAME</span></div>
+  <div class="pbody"><h3>The Apprentice</h3>
+    <p class="pcard">2D platformer made with SDL2 alongside digital art students.</p><div class="tags"><span class="tag">SDL2</span><span class="tag">C++</span><span class="tag">Tiled</span></div>
+    <details class="more"><summary><span class="when-closed">Learn more</span><span class="when-open">Show less</span> <i class="fas fa-chevron-down"></i></summary>
+      <div class="inner"><div class="gallery"><img src="../images/projects/the-apprentice-1.jpg" alt="The Apprentice" loading="lazy" onerror="this.remove()"><img src="../images/projects/the-apprentice-2.jpg" alt="The Apprentice" loading="lazy" onerror="this.remove()"><img src="../images/projects/the-apprentice-3.jpg" alt="The Apprentice" loading="lazy" onerror="this.remove()"><img src="../images/projects/the-apprentice-4.jpg" alt="The Apprentice" loading="lazy" onerror="this.remove()"></div><p>The Apprentice is a 2D platformer and adventure game in which the player plays a young apprentice who seeks to master ancient magic. It was developed with SDL2 and Tiled, combining a handcrafted art direction with precise level design.</p><h4>Main features</h4><ul><li>Physics and collision system in C++</li><li>Tiled map integration</li><li>Basic AI for enemies and bosses</li></ul><h4>My work</h4><p>My main role was programming the logic for menus, transitions, levels, saving and loading, and UI. I also helped integrate art assets, programmed enemy AI and optimized the base engine's performance.</p><a class="visit" href="https://oalonsoo.itch.io/the-apprentice" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> View on itch.io</a></div></details></div></article>
+<article class="proj" id="need-for-beer"><div class="cover"><img src="../images/projects/need-for-beer.png" alt="Need For Beer" loading="lazy" onerror="this.remove()"><span class="badge">GAME</span></div>
+  <div class="pbody"><h3>Need For Beer</h3>
+    <p class="pcard">Physics-based racing game, developed as a team learning project.</p><div class="tags"><span class="tag">C++</span><span class="tag">Physics</span><span class="tag">Racing game</span></div>
+    <details class="more"><summary><span class="when-closed">Learn more</span><span class="when-open">Show less</span> <i class="fas fa-chevron-down"></i></summary>
+      <div class="inner"><div class="gallery"><img src="../images/projects/needForBeer1.png" alt="Need For Beer" loading="lazy" onerror="this.remove()"><img src="../images/projects/needForBeer2.png" alt="Need For Beer" loading="lazy" onerror="this.remove()"><img src="../images/projects/needForBeer3.png" alt="Need For Beer" loading="lazy" onerror="this.remove()"><img src="../images/projects/needForBeer4.png" alt="Need For Beer" loading="lazy" onerror="this.remove()"></div><p>Need For Beer is a 1 or 2 player racing game with an emphasis on the physical simulation of vehicle movement. It was developed collaboratively in a GitHub repository with classmates, as part of a study of physics mechanics applied to video games.</p><h4>Main features</h4><ul><li>Vehicle physics simulation (forces, friction, collisions)</li><li>Dynamic circuits and crash-and-bounce mechanics</li><li>Custom keyboard controls, turbo system and advanced braking</li></ul><h4>My work</h4><p>In this project, my main role was designing and implementing the lap systems, as well as integrating the turbo system, all the UI and the main art. I also helped structure the GitHub repository and optimize for stable performance.</p><a class="visit" href="https://tonillovera.itch.io/needforbeer" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square"></i> View on itch.io</a></div></details></div></article>
+</div></section>
+<section id="contact"><div class="contact"><div><h2>Shall we collaborate?</h2><p>Write to me about projects, internships or game jams.</p></div>
+<div class="actions"><a class="btn amber" href="mailto:toni.llovera.roca@gmail.com"><i class="far fa-envelope"></i> toni.llovera.roca@gmail.com</a><div class="socials"><a href="https://github.com/ToniLloveraRoca" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a><a href="https://www.linkedin.com/in/tonilloveraroca/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a><a href="https://tonillovera.itch.io/" target="_blank" rel="noopener" aria-label="itch.io"><i class="fab fa-itch-io"></i></a></div></div></div></section>
 </main>
-
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>Toni Llovera Roca</h3>
-        <p>Estudiante de Videojuegos en CITM - 4º año</p>
-        <p>Apasionado por el desarrollo de juegos y la programación</p>
-      </div>
-      <div class="footer-section">
-        <h4>Enlaces</h4>
-        <ul class="footer-links">
-          <li><a href="../">Inicio</a></li>
-          <li><a href="../about/">Sobre Mí</a></li>
-          <li><a href="../projects/">Proyectos</a></li>
-          <li><a href="../contact/">Contacto</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Contacto</h4>
-        <div class="social-links">
-          <a href="mailto:toni.llovera.roca@gmail.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
-          <a href="https://github.com/ToniLloveraRoca" class="social-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/tonilloveraroca/" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          <a href="https://tonillovera.itch.io/" class="social-link" target="_blank" rel="noopener" aria-label="Itch.io"><i class="fab fa-itch-io"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom"><p>&copy; 2026 Toni Llovera Roca. Todos los derechos reservados.</p></div>
-  </div>
-</footer>
+<footer>&copy; 2026 Toni Llovera Roca. All rights reserved.</footer>
 <script src="../js/main.js"></script>
-</body>
-</html>
+</body></html>
