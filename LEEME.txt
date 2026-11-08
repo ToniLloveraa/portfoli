@@ -1,11 +1,24 @@
-COPIA AQUÍ TUS IMÁGENES (de static/ en tu proyecto Hugo):
+COPIA AQUÍ TUS IMÁGENES (de static/ en tu proyecto Hugo).
+OJO: GitHub Pages distingue MAYÚSCULAS/minúsculas: needForBeer1.png no es lo mismo que needforbeer1.png.
 
   favicon.png
-  assets/CV.pdf   (tu currículum, el botón 'Descargar CV' lo usa)
+  assets/CV.pdf   (tu currículum; lo usa el botón 'Descargar CV')
   images/toni.jpg
   images/toni_about.gif
-  images/icons/itchio.svg
-  images/projects/  (todas las imágenes de proyectos)
+
+images/projects/
+  [Son Of Ithaca]  portada: son-of-ithaca.png
+      galería: son-of-ithaca-1.png, son-of-ithaca-2.png, son-of-ithaca-3.png, son-of-ithaca-4.png, son-of-ithaca-5.png, son-of-ithaca-6.png, son-of-ithaca-7.png, son-of-ithaca-8.png  (las que no existan se ocultan solas)
+  [Estik]  portada: estik.png
+      galería: estik-1.png, estik-2.png, estik-3.png, estik-4.png, estik-5.png, estik-6.png  (las que no existan se ocultan solas)
+  [Dune Engine]  portada: dune-engine.jpg
+      galería: dune-engine-1.jpg, dune-engine-2.jpg, dune-engine-3.jpg  (las que no existan se ocultan solas)
+  [GranotaGo]  portada: granotago.png
+      galería: granotago-1.png, granotago-2.png, granotago-3.png, granotago-4.png, granotago-5.png  (las que no existan se ocultan solas)
+  [The Apprentice]  portada: the-apprentice-title.png
+      galería: the-apprentice-1.jpg, the-apprentice-2.jpg, the-apprentice-3.jpg, the-apprentice-4.jpg  (las que no existan se ocultan solas)
+  [Need For Beer]  portada: need-for-beer.png
+      galería: needForBeer1.png, needForBeer2.png, needForBeer3.png, needForBeer4.png  (las que no existan se ocultan solas)
 
 Después sube TODO el contenido de esta carpeta a la raíz de tu repo y activa
 Settings > Pages > Deploy from a branch > main / (root).

@@ -149,3 +149,7 @@ h1,h2,h3,h4{font-family:var(--display);line-height:1.1;letter-spacing:-.02em}
   .project-gallery-item{height:220px}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* vídeo de proyecto */
+.project-video{max-width:46rem;margin:0 0 2.5rem;border:2px solid var(--ink);border-radius:6px;box-shadow:var(--hard);overflow:hidden;background:var(--ink)}
+.project-video iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
