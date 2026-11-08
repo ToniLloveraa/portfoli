@@ -153,3 +153,9 @@ h1,h2,h3,h4{font-family:var(--display);line-height:1.1;letter-spacing:-.02em}
 /* vídeo de proyecto */
 .project-video{max-width:46rem;margin:0 0 2.5rem;border:2px solid var(--ink);border-radius:6px;box-shadow:var(--hard);overflow:hidden;background:var(--ink)}
 .project-video iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
+
+/* premio */
+.award{display:inline-block;align-self:flex-start;margin:0 0 1.1rem;padding:.3rem .8rem;background:var(--accent);color:var(--ink);
+  border:2px solid var(--ink);border-radius:4px;box-shadow:3px 3px 0 var(--ink);font:700 .9rem var(--body)}
+.page-header .award{margin:1rem 0 0;color:var(--ink)}
+.project-content .award{margin-bottom:1rem}

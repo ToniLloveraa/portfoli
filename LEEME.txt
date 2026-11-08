@@ -7,10 +7,12 @@ OJO: GitHub Pages distingue MAYÚSCULAS/minúsculas: needForBeer1.png no es lo m
   images/toni_about.gif
 
 images/projects/
-  [Son Of Ithaca]  portada: son-of-ithaca.png
-      galería: son-of-ithaca-1.png, son-of-ithaca-2.png, son-of-ithaca-3.png, son-of-ithaca-4.png, son-of-ithaca-5.png, son-of-ithaca-6.png, son-of-ithaca-7.png, son-of-ithaca-8.png  (las que no existan se ocultan solas)
   [Estik]  portada: estik.png
       galería: estik-1.png, estik-2.png, estik-3.png, estik-4.png, estik-5.png, estik-6.png  (las que no existan se ocultan solas)
+  [Odossea]  portada: odossea.png
+      galería: odossea-1.png, odossea-2.png, odossea-3.png, odossea-4.png, odossea-5.png, odossea-6.png  (las que no existan se ocultan solas)
+  [Son Of Ithaca]  portada: son-of-ithaca.png
+      galería: son-of-ithaca-1.png, son-of-ithaca-2.png, son-of-ithaca-3.png, son-of-ithaca-4.png, son-of-ithaca-5.png, son-of-ithaca-6.png, son-of-ithaca-7.png, son-of-ithaca-8.png  (las que no existan se ocultan solas)
   [Dune Engine]  portada: dune-engine.jpg
       galería: dune-engine-1.jpg, dune-engine-2.jpg, dune-engine-3.jpg  (las que no existan se ocultan solas)
   [GranotaGo]  portada: granotago.png
