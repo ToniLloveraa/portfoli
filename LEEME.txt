@@ -4,7 +4,6 @@ OJO: GitHub Pages distingue MAYÚSCULAS/minúsculas: needForBeer1.png no es lo m
   favicon.png
   assets/CV.pdf   (tu currículum; lo usa el botón 'Descargar CV')
   images/toni.jpg
-  images/toni_about.gif
 
 images/projects/
   [Estik]  portada: estik.png
