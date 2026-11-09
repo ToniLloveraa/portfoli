@@ -176,21 +176,8 @@
     box.appendChild(ico); d.appendChild(box); d.appendChild(el('span', '', esc(s.n)));
     return d;
   }
-  var SKILL_GROUPS = [
-    ['Languages', 'fa-code', ['C++', 'C#']],
-    ['Engines & graphics', 'fa-cube', ['Unity', 'Unreal Engine', 'OpenGL', 'SDL', 'Tiled']],
-    ['Tools', 'fa-screwdriver-wrench', ['Visual Studio', 'Git', 'GitHub']]
-  ];
   var track = $('#skillTrack');
-  SKILL_GROUPS.forEach(function (g, gi) {
-    var card = el('div', 'sgroup reveal'); card.style.setProperty('--d', gi);
-    card.appendChild(el('h3', '', '<i class="fas ' + g[1] + '"></i>' + esc(g[0])));
-    var list = el('div', 'schips');
-    g[2].forEach(function (name) {
-      SKILLS.forEach(function (s) { if (s.n === name) list.appendChild(skillTile(s)); });
-    });
-    card.appendChild(list); track.appendChild(card);
-  });
+  SKILLS.concat(SKILLS).forEach(function (s) { track.appendChild(skillTile(s)); });
 
   /* ---------- SHOWCASE (project images) ---------- */
   function showcase(p) {
@@ -255,7 +242,7 @@
   var SHOW_FIRST = 3; // projects visible before pressing "Show more"
   PROJECTS.forEach(function (p, idx) {
     // card
-    var c = el('article', 'proj reveal'); c.id = p.slug; c.setAttribute('data-cursor', 'View'); c.setAttribute('data-open', p.slug); c.style.setProperty('--d', idx % SHOW_FIRST);
+    var c = el('article', 'proj reveal'); c.id = p.slug; c.setAttribute('data-open', p.slug); c.style.setProperty('--d', idx % SHOW_FIRST);
     if (idx >= SHOW_FIRST) c.classList.add('extra', 'is-collapsed');
     var cover = el('div', 'cover');
     cover.appendChild(tryImg(p.cover[0], p.title, function (im) { im.remove(); }));
@@ -454,7 +441,7 @@
       var t = e.target; if (!t || !t.closest) return;
       var onFrame = t.tagName === 'IFRAME';
       var lab = t.closest('[data-cursor]');
-      var lnk = t.closest('a,button,summary,[role="button"]');
+      var lnk = !t.closest('.proj') && t.closest('a,button,summary,[role="button"]');
       curRing.classList.toggle('label', !!lab && !onFrame);
       curRing.classList.toggle('link', !lab && !!lnk);
       curDot.classList.toggle('hide', !!lab || onFrame);
