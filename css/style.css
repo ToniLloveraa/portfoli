@@ -117,10 +117,10 @@ section{margin-bottom:6rem}
 .award span{color:var(--muted);font-size:.8rem}
 .award>div{flex:1;min-width:0}
 .logos{display:flex;gap:.5rem;align-items:center;flex:none}
-.logo{display:grid;place-items:center;height:34px;padding:0 .55rem;border-radius:8px;background:#fff}
-.logo img{height:22px;width:auto;max-width:90px;object-fit:contain}
-.logos.big .logo{height:54px;padding:0 .9rem;border-radius:12px}
-.logos.big .logo img{height:36px;max-width:150px}
+.logo{display:grid;place-items:center;height:46px}
+.logo img{height:100%;width:auto;max-width:110px;object-fit:contain;border-radius:8px}
+.logos.big .logo{height:56px}
+.logos.big .logo img{max-width:150px;border-radius:10px}
 .banner{display:flex;align-items:center;gap:1rem;padding:.9rem 1.2rem;margin-bottom:1rem;border-radius:16px;background:var(--gold-soft);border:1px solid var(--gold-line)}
 .banner>i{color:var(--gold);font-size:1.7rem}
 .banner .btxt{flex:1;min-width:0}

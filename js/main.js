@@ -16,6 +16,7 @@
   var LOGO = './images/logos/';
   var LG = {
     socialpoint: ['Socialpoint', ['socialpoint.png', 'socialpoint.svg', 'socialpoint.webp', 'socialpoint.jpg']],
+    indiedevday: ['IndieDevDay', ['IndieDevDay.jpg', 'IndieDevDay.png', 'IndieDevDay.webp', 'IndieDevDay.svg']],
     gamejam: ['9th Gran CITM Game Jam', ['gran-citm-gamejam.png', 'gran-citm-gamejam.svg', 'gran-citm-gamejam.webp', 'gran-citm-gamejam.jpg']]
   };
   function logoEls(keys, cls) {
@@ -83,7 +84,7 @@
     {
       slug: 'son-of-ithaca', title: 'Son Of Ithaca',
       cover: [[IMG + 'son-of-ithaca.png']],
-      award: ['Nominee: Best Academic Game', 'IndieDevDay · SAGA Game Fest 2026'],
+      award: ['Nominee: Best Academic Game', 'IndieDevDay · SAGA Game Fest 2026', ['indiedevday']],
       card: '3D action-adventure based on The Odyssey: you play as Telemachus searching for his father, Odysseus.',
       tags: ['Action-Adventure', '3D', 'Teamwork'],
       video: yt('PYzuc0fsHpM'),
