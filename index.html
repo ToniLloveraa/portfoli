@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Portfolio of Toni Llovera Roca, video game student at CITM - 4th year">
+<meta name="theme-color" content="#0b0e14">
 <title>Toni Llovera Roca | Video Game Student</title>
 <link rel="icon" href="./favicon.png" type="image/png">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<script>document.documentElement.classList.add("js")</script>
+<script>
+document.documentElement.classList.add("js");
+try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
 <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -16,12 +20,14 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top">Toni Llovera <b>Roca</b></a>
+    <a class="brand" href="#top"><span class="mark">TL</span>Toni Llovera Roca</a>
     <nav>
-      <a href="#skills">Skills &amp; Tools</a>
+      <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
-      <a href="#contact">Let's collaborate</a>
+      <a href="#contact">Contact</a>
     </nav>
+    <a class="hbtn cv" href="./assets/CV.pdf" download><i class="fas fa-download"></i><span>CV</span></a>
+    <button class="hbtn icon-btn" id="themeBtn" type="button" aria-label="Toggle light/dark theme"><i class="fas fa-sun"></i></button>
   </div>
 </header>
 
@@ -29,17 +35,18 @@
 
   <section class="hero">
     <div>
-      <h1 class="rise" style="--i:0">Hi! I'm <span class="hl">Toni</span></h1>
-      <div class="roles rise" style="--i:1" id="roles" data-words='["Gameplay programmer", "UI programmer", "Technical artist", "Tools developer"]'>Gameplay programmer</div>
-      <p class="bio rise" style="--i:2">Video Game student at CITM, now in my 4th year. I specialize in <b>gameplay programming</b>, <b>systems design</b> and <b>tool development</b>. On the technical side I work with <b>C++ and C#</b>, in <b>Unity and Unreal Engine</b>, and in team projects I also handle <b>UI programming</b> and <b>technical art</b>.</p>
-      <div class="info rise" style="--i:3">
-        <div><span>Location:</span>Barcelona, Spain</div>
-        <div><span>Status:</span>Open to internships</div>
-        <div><span>Studies:</span>Video Games at CITM · 4th year</div>
+      <span class="status rise" style="--i:0"><i></i>Open to internships</span>
+      <p class="eyebrow rise" style="--i:1">Hi! I'm</p>
+      <h1 class="rise" style="--i:1">Toni <span class="hl">Llovera Roca</span></h1>
+      <div class="roles rise" style="--i:2" id="roles" data-words='["Gameplay programmer", "UI programmer", "Technical artist", "Tools developer"]'>Gameplay programmer</div>
+      <p class="bio rise" style="--i:3">Video Game student at CITM, now in my 4th year. I specialize in <b>gameplay programming</b>, <b>systems design</b> and <b>tool development</b>. On the technical side I work with <b>C++ and C#</b>, in <b>Unity and Unreal Engine</b>, and in team projects I also handle <b>UI programming</b> and <b>technical art</b>.</p>
+      <div class="meta rise" style="--i:4">
+        <span><i class="fas fa-location-dot"></i>Barcelona, Spain</span>
+        <span><i class="fas fa-graduation-cap"></i>Video Games at CITM · 4th year</span>
       </div>
-      <div class="actions rise" style="--i:4">
-        <a class="btn" href="mailto:toni.llovera.roca@gmail.com"><i class="far fa-envelope"></i> toni.llovera.roca@gmail.com</a>
-        <a class="btn coral" href="./assets/CV.pdf" download><i class="fas fa-download"></i> Download CV</a>
+      <div class="actions rise" style="--i:5">
+        <a class="btn primary" href="mailto:toni.llovera.roca@gmail.com"><i class="far fa-envelope"></i> Get in touch</a>
+        <a class="btn" href="./assets/CV.pdf" download><i class="fas fa-download"></i> Download CV</a>
         <div class="socials">
           <a href="https://github.com/ToniLloveraRoca" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
           <a href="https://www.linkedin.com/in/tonilloveraroca/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -52,13 +59,20 @@
     </div>
   </section>
 
+  <div class="stats" style="--i:6">
+    <div class="stat"><b>4th</b><span>year at CITM</span></div>
+    <div class="stat"><b id="statProjects">7</b><span>projects</span></div>
+    <div class="stat"><b>1</b><span>award won</span></div>
+    <div class="stat"><b>1</b><span>nomination</span></div>
+  </div>
+
   <section id="skills">
-    <div class="sec-title"><h2>Skills &amp; Tools</h2></div>
-    <div class="marquee"><div class="track" id="skillTrack"></div></div>
+    <div class="sec-title"><small>What I work with</small><h2>Skills &amp; Tools</h2></div>
+    <div class="skills" id="skillGrid"></div>
   </section>
 
   <section id="projects">
-    <div class="sec-title"><h2>Projects</h2></div>
+    <div class="sec-title"><small>Selected work</small><h2>Projects</h2></div>
     <div class="grid" id="projGrid"></div>
   </section>
 
@@ -69,7 +83,7 @@
         <p>Write to me about projects, internships or game jams.</p>
       </div>
       <div class="actions">
-        <a class="btn coral" href="mailto:toni.llovera.roca@gmail.com"><i class="far fa-envelope"></i> toni.llovera.roca@gmail.com</a>
+        <a class="btn primary" href="mailto:toni.llovera.roca@gmail.com"><i class="far fa-envelope"></i> toni.llovera.roca@gmail.com</a>
         <div class="socials">
           <a href="https://github.com/ToniLloveraRoca" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
           <a href="https://www.linkedin.com/in/tonilloveraroca/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>

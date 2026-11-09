@@ -80,7 +80,7 @@
       link: 'https://nobody-games-studio.itch.io/son-of-ithaca'
     },
     {
-      slug: 'dune-engine', title: 'Dune Engine',
+      slug: 'dune-engine', title: 'Dune Engine', type: 'ENGINE',
       cover: [[IMG + 'dune-engine.jpg']],
       card: 'Game engine built from scratch using SDL3 and OpenGL.',
       tags: ['C++', 'OpenGL', 'SDL3'],
@@ -150,19 +150,34 @@
   }
 
   /* ---------- SKILLS ---------- */
-  var track = $('#skillTrack');
+  var CATS = [
+    ['Programming', ['C++', 'C#']],
+    ['Engines', ['Unity', 'Unreal Engine']],
+    ['Libraries & Frameworks', ['OpenGL', 'SDL', 'Tiled']],
+    ['Tools', ['Visual Studio', 'Git', 'GitHub']],
+    ['Design', ['Level Design']]
+  ];
   function skillTile(s) {
-    var d = el('div', 'skill');
-    var ico;
+    var d = el('div', 'skill'), box = el('span', 'ico'), ico;
     if (s.d) {
       ico = new Image(); ico.alt = ''; ico.loading = 'lazy'; ico.src = DEV + s.d;
-      ico.onerror = function () { var i = el('i', 'mono', s.m); ico.replaceWith(i); };
+      ico.onerror = function () { ico.replaceWith(el('i', 'mono', s.m)); };
     } else if (s.fa) { ico = el('i', 'fas ' + s.fa); }
     else { ico = el('i', 'mono', s.m); }
-    d.appendChild(ico); d.appendChild(el('span', '', esc(s.n)));
+    box.appendChild(ico); d.appendChild(box); d.appendChild(el('span', '', esc(s.n)));
     return d;
   }
-  SKILLS.concat(SKILLS).forEach(function (s) { track.appendChild(skillTile(s)); });
+  var skillGrid = $('#skillGrid');
+  CATS.forEach(function (cat, k) {
+    var card = el('div', 'scat reveal'); card.style.setProperty('--d', k % 3);
+    card.appendChild(el('h3', '', esc(cat[0])));
+    var chips = el('div', 'chips');
+    cat[1].forEach(function (name) {
+      var s = SKILLS.filter(function (x) { return x.n === name; })[0];
+      if (s) chips.appendChild(skillTile(s));
+    });
+    card.appendChild(chips); skillGrid.appendChild(card);
+  });
 
   /* ---------- PROJECT CARDS + WINDOWS ---------- */
   var grid = $('#projGrid');
@@ -171,7 +186,7 @@
     var c = el('article', 'proj reveal'); c.id = p.slug; c.style.setProperty('--d', idx % 3);
     var cover = el('div', 'cover');
     cover.appendChild(tryImg(p.cover[0], p.title, function (im) { im.remove(); }));
-    cover.appendChild(el('span', 'badge', 'GAME'));
+    cover.appendChild(el('span', 'badge', p.type || 'GAME'));
     var body = el('div', 'pbody');
     body.appendChild(el('h3', '', esc(p.title)));
     if (p.award) body.appendChild(el('div', 'award', '<i class="fas fa-trophy"></i><div><strong>' + esc(p.award[0]) + '</strong><span>' + esc(p.award[1]) + '</span></div>'));
@@ -316,6 +331,32 @@
     if (e.key === 'ArrowLeft') step(-1);
     else if (e.key === 'ArrowRight') step(1);
   });
+
+  /* ---------- THEME TOGGLE ---------- */
+  var root = document.documentElement, tbtn = $('#themeBtn');
+  function paintTheme() {
+    var dark = root.getAttribute('data-theme') !== 'light';
+    tbtn.innerHTML = '<i class="fas ' + (dark ? 'fa-sun' : 'fa-moon') + '"></i>';
+    var m = $('meta[name="theme-color"]'); if (m) m.setAttribute('content', dark ? '#0b0e14' : '#f7f8fa');
+  }
+  tbtn.addEventListener('click', function () {
+    var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    paintTheme();
+  });
+  paintTheme();
+
+  /* ---------- ACTIVE NAV LINK ---------- */
+  var links = $$('.top nav a'), secs = links.map(function (a) { return $(a.getAttribute('href')); });
+  function spy() {
+    var y = scrollY + innerHeight * 0.35, active = -1;
+    secs.forEach(function (s, i) { if (s && s.offsetTop <= y) active = i; });
+    links.forEach(function (a, i) { a.classList.toggle('active', i === active); });
+  }
+  addEventListener('scroll', spy, { passive: true }); spy();
+
+  var sp = $('#statProjects'); if (sp) sp.textContent = PROJECTS.length;
 
   var h = location.hash.slice(1); if (h) openM(h);
 })();
