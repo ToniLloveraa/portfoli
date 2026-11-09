@@ -22,13 +22,10 @@
     { n: 'Visual Studio', d: 'visualstudio/visualstudio-plain.svg', m: 'VS' },
     { n: 'Git', d: 'git/git-original.svg', m: 'Gi' },
     { n: 'GitHub', d: 'github/github-original.svg', m: 'GH' },
-    { n: 'Jira', d: 'jira/jira-original.svg', m: 'Ji' },
     { n: 'OpenGL', d: 'opengl/opengl-original.svg', m: 'GL' },
     { n: 'SDL', m: 'SDL' },
     { n: 'Tiled', m: 'Til' },
-    { n: 'Game Design', fa: 'fa-gamepad' },
-    { n: 'Level Design', fa: 'fa-map' },
-    { n: 'UI/UX', fa: 'fa-object-group' }
+    { n: 'Level Design', fa: 'fa-map' }
   ];
 
   var ME = 'Toni Llovera Roca';
@@ -279,15 +276,6 @@
       c2 += del ? -1 : 1; setTimeout(tick, del ? 35 : 75);
     })();
   }
-
-  /* ---------- 3D TILT ---------- */
-  if (!reduce && matchMedia('(hover: hover)').matches) $$('.proj').forEach(function (c) {
-    c.addEventListener('pointermove', function (e) {
-      var r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
-      c.style.setProperty('--ry', (x * 6).toFixed(2) + 'deg'); c.style.setProperty('--rx', (-y * 6).toFixed(2) + 'deg');
-    });
-    c.addEventListener('pointerleave', function () { c.style.setProperty('--rx', '0deg'); c.style.setProperty('--ry', '0deg'); });
-  });
 
   /* ---------- PROJECT WINDOWS ---------- */
   function openM(slug) {
