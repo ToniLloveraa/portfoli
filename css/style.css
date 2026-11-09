@@ -146,7 +146,7 @@ section{margin-bottom:7.5rem}
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 .modal h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;margin:0 3.5rem .8rem 0}
 .pill{display:inline-flex;gap:.55rem;align-items:center;padding:.4rem .9rem;border-radius:10px;background:var(--gold-soft);border:1px solid var(--gold-line);color:var(--gold);font-weight:600;font-size:.88rem;margin-bottom:.8rem}
-.media{width:86%;border-radius:18px;overflow:hidden;background:#000;margin-bottom:1rem;border:1px solid var(--line)}
+.media{width:86%;margin:0 auto 1rem;border-radius:18px;overflow:hidden;background:#000;border:1px solid var(--line)}
 .media iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
 .media img{width:100%;max-height:640px;object-fit:cover}
 .facts{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.8rem}
@@ -275,3 +275,7 @@ html.has-cursor,html.has-cursor *{cursor:none!important}
 /* justified text (hyphenation keeps word gaps even; html lang="en") */
 .hero p.bio,.sec-title p,.pcard,.modal p,.modal li,.contact p{text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
 .modal .team li,.modal .facts,.modal .facts span{text-align:left;hyphens:manual}
+
+/* hover video preview inside project cards */
+.cover iframe.preview{position:absolute;top:50%;left:50%;width:max(100%,calc(230px*16/9));aspect-ratio:16/9;height:auto;transform:translate(-50%,-50%);border:0;pointer-events:none;opacity:0;transition:opacity .4s}
+.cover iframe.preview.on{opacity:1}
