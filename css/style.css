@@ -31,7 +31,7 @@ h1,h2,h3,h4{font-family:var(--display);line-height:1.1;letter-spacing:-.02em}
 .icon-btn{width:40px;height:40px;padding:0;justify-content:center}
 
 /* hero */
-.hero{display:grid;grid-template-columns:1fr minmax(280px,400px);gap:clamp(2rem,5vw,6rem);align-items:center;padding:clamp(3rem,7vw,6rem) 0 2.5rem}
+.hero{display:grid;grid-template-columns:1fr minmax(280px,400px);gap:clamp(2rem,5vw,6rem);align-items:center;padding:clamp(3rem,7vw,6rem) 0 2rem;margin-bottom:0}
 .status{display:inline-flex;align-items:center;gap:.6rem;padding:.35rem .9rem;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:.85rem;font-weight:600;color:var(--muted);margin-bottom:1.5rem}
 .status i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 var(--ok);animation:ping 2s infinite}
 @keyframes ping{70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
@@ -226,14 +226,15 @@ html.has-cursor,html.has-cursor *{cursor:none!important}
 .cur-dot,.cur-ring{position:fixed;inset:0 auto auto 0;margin:0;padding:0;overflow:visible;pointer-events:none;z-index:9999;opacity:0;
   transition:opacity .25s,width .3s cubic-bezier(.2,.8,.2,1),height .3s cubic-bezier(.2,.8,.2,1),background .25s,border-color .25s}
 .cur-dot.on,.cur-ring.on{opacity:1}
-.cur-dot{width:6px;height:6px;border:0;border-radius:50%;background:var(--accent)}
+.cur-dot{width:6px;height:6px;border:0;border-radius:50%;background:var(--accent);box-shadow:0 0 0 1px rgba(6,10,20,.6)}
 .cur-dot.hide{opacity:0}
-.cur-ring{width:26px;height:26px;border:2px solid var(--accent);border-radius:50%;background:transparent;display:grid;place-items:center}
+.cur-ring{width:26px;height:26px;border:2px solid var(--accent);border-radius:50%;background:transparent;box-shadow:0 0 0 1px rgba(6,10,20,.5);display:grid;place-items:center}
 .cur-ring span{font:700 .72rem var(--display);color:var(--accent-ink);opacity:0;transition:opacity .2s}
-.cur-ring.link{width:42px;height:42px;background:var(--accent-soft)}
+.cur-ring.link{width:18px;height:18px;background:var(--accent);border-color:var(--ink);box-shadow:0 0 0 3px rgba(91,155,255,.35),0 0 18px 2px rgba(91,155,255,.55)}
+.cur-dot.hide-link{opacity:0}
 .cur-ring.label{width:56px;height:56px;background:var(--accent)}
 .cur-ring.label span{opacity:1}
-.cur-ring.down{width:20px;height:20px}
+.cur-ring.down{width:12px;height:12px}
 .cur-ring.off.on{opacity:0}
 
 /* reveal (JS only) */

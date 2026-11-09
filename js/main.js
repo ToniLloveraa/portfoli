@@ -455,6 +455,7 @@
       curRing.classList.toggle('label', !!lab && !onFrame);
       curRing.classList.toggle('link', !lab && !!lnk);
       curDot.classList.toggle('hide', !!lab || onFrame);
+      curDot.classList.toggle('hide-link', curRing.classList.contains('link'));
       curRing.classList.toggle('off', onFrame);
       if (lab) curLabel.textContent = lab.getAttribute('data-cursor');
     });
