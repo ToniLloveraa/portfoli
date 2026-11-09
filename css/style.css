@@ -271,3 +271,7 @@ html.has-cursor,html.has-cursor *{cursor:none!important}
 }
 
 @media(max-width:720px){.media{width:100%}}
+
+/* justified text (hyphenation keeps word gaps even; html lang="en") */
+.hero p.bio,.sec-title p,.pcard,.modal p,.modal li,.contact p{text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+.modal .team li,.modal .facts,.modal .facts span{text-align:left;hyphens:manual}
