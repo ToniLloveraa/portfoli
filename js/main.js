@@ -179,11 +179,71 @@
   var track = $('#skillTrack');
   SKILLS.concat(SKILLS).forEach(function (s) { track.appendChild(skillTile(s)); });
 
+  /* ---------- SHOWCASE (project images) ---------- */
+  function showcase(p) {
+    var box = el('div', 'showcase');
+    box.appendChild(el('h3', '', 'Showcase'));
+    var stage = el('button', 'stage'); stage.type = 'button';
+    stage.setAttribute('data-cursor', 'Zoom'); stage.setAttribute('aria-label', 'Open image full screen');
+    var big = new Image(); big.alt = ''; big.decoding = 'async'; stage.appendChild(big);
+    var thumbs = el('div', 'thumbs');
+    var foot = el('div', 'sc-foot');
+    var cap = el('span', 'sc-cap'), cnt = el('span', 'sc-count');
+    var prev = el('button', 'sc-btn', '<i class="fas fa-chevron-left"></i>'), next = el('button', 'sc-btn', '<i class="fas fa-chevron-right"></i>');
+    prev.type = next.type = 'button'; prev.setAttribute('aria-label', 'Previous image'); next.setAttribute('aria-label', 'Next image');
+    foot.appendChild(cap); foot.appendChild(cnt); foot.appendChild(prev); foot.appendChild(next);
+    box.appendChild(stage); box.appendChild(thumbs); box.appendChild(foot);
+
+    var items = [], cur = 0;
+    function paint() {
+      if (!items.length) { box.hidden = true; return; }
+      box.hidden = false;
+      cur = Math.min(cur, items.length - 1);
+      var it = items[cur], src = it.img.currentSrc || it.img.src;
+      if (big.getAttribute('src') !== src) big.src = src;
+      big.alt = it.img.alt;
+      cap.textContent = it.cap;
+      cnt.textContent = (cur + 1) + ' / ' + items.length;
+      box.classList.toggle('single', items.length < 2);
+      items.forEach(function (x, i) { x.btn.classList.toggle('on', i === cur); x.btn.setAttribute('aria-current', i === cur ? 'true' : 'false'); });
+    }
+    function go(i, smooth) {
+      if (!items.length) return;
+      cur = (i + items.length) % items.length;
+      big.classList.remove('swap'); void big.offsetWidth; big.classList.add('swap');
+      paint();
+      var b = items[cur].btn;
+      thumbs.scrollTo({ left: b.offsetLeft - (thumbs.clientWidth - b.offsetWidth) / 2, behavior: reduce ? 'auto' : 'smooth' });
+    }
+    p.gallery.forEach(function (cands, k) {
+      var b = el('button', 'thumb'); b.type = 'button'; b.setAttribute('aria-label', 'Show image ' + (k + 1));
+      var it = { btn: b, cap: (p.captions && p.captions[k]) || 'Screenshot ' + (k + 1) };
+      it.img = tryImg(cands, p.title + ' screenshot ' + (k + 1), function () {
+        var i = items.indexOf(it); if (i > -1) { items.splice(i, 1); if (i < cur) cur--; }
+        b.remove(); paint();
+      });
+      it.img.addEventListener('load', paint);
+      b.appendChild(it.img); thumbs.appendChild(b); items.push(it);
+      b.addEventListener('click', function () { go(items.indexOf(it)); });
+    });
+    prev.addEventListener('click', function () { go(cur - 1); });
+    next.addEventListener('click', function () { go(cur + 1); });
+    stage.addEventListener('click', function () { openLB(items.map(function (x) { return x.img; }), cur); });
+    box.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { go(cur - 1); e.preventDefault(); }
+      else if (e.key === 'ArrowRight') { go(cur + 1); e.preventDefault(); }
+    });
+    paint();
+    return box;
+  }
+
   /* ---------- PROJECT CARDS + WINDOWS ---------- */
   var grid = $('#projGrid');
+  var SHOW_FIRST = 3; // projects visible before pressing "Show more"
   PROJECTS.forEach(function (p, idx) {
     // card
-    var c = el('article', 'proj reveal'); c.id = p.slug; c.setAttribute('data-cursor', 'View'); c.style.setProperty('--d', idx % 3);
+    var c = el('article', 'proj reveal'); c.id = p.slug; c.setAttribute('data-cursor', 'View'); c.setAttribute('data-open', p.slug); c.style.setProperty('--d', idx % SHOW_FIRST);
+    if (idx >= SHOW_FIRST) c.classList.add('extra', 'is-collapsed');
     var cover = el('div', 'cover');
     cover.appendChild(tryImg(p.cover[0], p.title, function (im) { im.remove(); }));
     cover.appendChild(el('span', 'badge', p.type || 'GAME'));
@@ -255,18 +315,9 @@
     } else { cols.style.gridTemplateColumns = '1fr'; }
     blk(cols);
 
-    // screenshots
+    // showcase (screenshots)
     var tail = el('div');
-    if (p.gallery && p.gallery.length) {
-      tail.appendChild(el('h3', '', 'Screenshots'));
-      var shots = el('div', 'shots');
-      p.gallery.forEach(function (cands, k) {
-        var b = el('button', 'shot'); b.type = 'button'; b.setAttribute('data-cursor', 'Zoom'); b.setAttribute('aria-label', 'Open screenshot ' + (k + 1));
-        var im = tryImg(cands, p.title + ' screenshot ' + (k + 1), function () { b.remove(); });
-        b.appendChild(im); shots.appendChild(b);
-      });
-      tail.appendChild(shots);
-    }
+    if (p.gallery && p.gallery.length) tail.appendChild(showcase(p));
     var btns = el('div', 'btns');
     if (p.link) btns.appendChild(el('a', 'visit', '<i class="fas fa-arrow-up-right-from-square"></i> View on itch.io')).href = p.link;
     if (p.link) { var a = btns.lastChild; a.target = '_blank'; a.rel = 'noopener'; }
@@ -275,6 +326,24 @@
 
     d.appendChild(x); d.appendChild(sc); document.body.appendChild(d);
   });
+
+  /* ---------- SHOW MORE / FEWER PROJECTS ---------- */
+  var moreWrap = $('#moreWrap'), moreBtn = $('#moreBtn');
+  if (moreBtn && PROJECTS.length > SHOW_FIRST) {
+    moreWrap.hidden = false;
+    var hiddenCount = PROJECTS.length - SHOW_FIRST;
+    var paintMore = function (open) {
+      $('span', moreBtn).textContent = open ? 'Show fewer projects' : 'Show more projects (' + hiddenCount + ')';
+      moreBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    paintMore(false);
+    moreBtn.addEventListener('click', function () {
+      var open = moreBtn.getAttribute('aria-expanded') !== 'true';
+      $$('.proj.extra').forEach(function (c) { c.classList.toggle('is-collapsed', !open); });
+      paintMore(open);
+      if (!open) $('#projects').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+    });
+  }
 
   /* ---------- PROGRESS BAR ---------- */
   var bar = $('.progress');
@@ -316,12 +385,6 @@
   $$('dialog.modal').forEach(function (d) {
     d.addEventListener('click', function (e) { if (e.target === d || e.target.hasAttribute('data-close')) d.close(); });
     d.addEventListener('close', function () { closeM(d); });
-    // screenshots -> lightbox
-    d.addEventListener('click', function (e) {
-      var b = e.target.closest('.shot'); if (!b) return;
-      var imgs = $$('.shot img', d);
-      openLB(imgs, imgs.indexOf($('img', b)));
-    });
   });
 
   /* ---------- LIGHTBOX ---------- */

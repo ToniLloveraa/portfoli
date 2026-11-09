@@ -13,7 +13,7 @@
 document.documentElement.classList.add("js");
 try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
 </script>
-<link rel="stylesheet" href="./css/style.css?v=20261109">
+<link rel="stylesheet" href="./css/style.css?v=20261110">
 </head>
 <body>
 <div class="progress"></div>
@@ -60,7 +60,6 @@ try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") 
   </section>
 
   <div class="stats" style="--i:6">
-    <div class="stat"><i class="fas fa-graduation-cap"></i><div><b>4th</b><span>year at CITM</span></div></div>
     <div class="stat"><i class="fas fa-gamepad"></i><div><b id="statProjects">7</b><span>projects</span></div></div>
     <div class="stat"><i class="fas fa-trophy"></i><div><b>1</b><span>award won</span></div></div>
     <div class="stat"><i class="fas fa-star"></i><div><b>1</b><span>nomination</span></div></div>
@@ -74,6 +73,7 @@ try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") 
   <section id="projects">
     <div class="sec-title"><small>Selected work</small><h2>Projects</h2></div>
     <div class="grid" id="projGrid"></div>
+    <div class="more" id="moreWrap" hidden><button class="btn" id="moreBtn" type="button" aria-expanded="false" aria-controls="projGrid"><span>Show more projects</span><i class="fas fa-chevron-down"></i></button></div>
   </section>
 
   <section id="contact">
@@ -105,6 +105,6 @@ try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") 
   <span class="count" id="lbCount"></span>
 </dialog>
 
-<script src="./js/main.js?v=20261109"></script>
+<script src="./js/main.js?v=20261110"></script>
 </body>
 </html>
