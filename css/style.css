@@ -80,19 +80,18 @@ section{margin-bottom:6rem}
 .sec-title p{color:var(--muted);margin-top:.6rem;max-width:40rem}
 
 /* skills */
-.skills{display:grid;grid-template-columns:1fr;gap:1.25rem}
-@media(min-width:700px){.skills{grid-template-columns:repeat(3,1fr)}}
-@media(min-width:1300px){.skills{grid-template-columns:repeat(5,1fr)}}
-.scat{padding:1.6rem;border-radius:18px;background:var(--card);border:1px solid var(--line);transition:border-color .25s,transform .3s cubic-bezier(.2,.8,.2,1)}
-.scat:hover{border-color:var(--accent);transform:translateY(-4px)}
-.scat h3{font:700 .8rem var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.1rem}
-.chips{display:flex;flex-wrap:wrap;gap:.65rem}
-.skill{display:inline-flex;align-items:center;gap:.65rem;padding:.45rem .9rem .45rem .45rem;border-radius:12px;background:var(--card2);border:1px solid var(--line);font-weight:600;font-size:.92rem;transition:border-color .2s,transform .2s}
-.skill:hover{border-color:var(--accent);transform:translateY(-2px)}
-.skill .ico{width:34px;height:34px;border-radius:9px;background:#fff;display:grid;place-items:center;flex:none;color:#0f172a;font-size:1rem}
-.skill .ico img{width:22px;height:22px;object-fit:contain}
+.marquee{overflow:hidden;padding:.8rem 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.track{display:flex;gap:1rem;width:max-content;animation:scroll 45s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(calc(-50% - .5rem))}}
+.skill{width:150px;height:128px;flex:none;background:var(--card);border:1px solid var(--line);border-radius:18px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:.7rem;font-size:.85rem;font-weight:500;transition:transform .25s,border-color .25s}
+.skill:hover{transform:translateY(-8px) scale(1.05);border-color:var(--accent)}
+.skill .ico{width:50px;height:50px;border-radius:13px;background:#fff;display:grid;place-items:center;color:#0f172a;font-size:1.5rem}
+.skill .ico img{width:32px;height:32px;object-fit:contain}
 .skill .ico i{font-style:normal}
-.skill .ico .mono{font:800 .72rem var(--display)}
+.skill .ico .mono{font:800 1rem var(--display)}
+@media(prefers-reduced-motion:reduce){.marquee{overflow-x:auto}.track{animation:none}}
 
 /* project cards */
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem}

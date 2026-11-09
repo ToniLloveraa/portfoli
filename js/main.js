@@ -150,13 +150,6 @@
   }
 
   /* ---------- SKILLS ---------- */
-  var CATS = [
-    ['Programming', ['C++', 'C#']],
-    ['Engines', ['Unity', 'Unreal Engine']],
-    ['Libraries & Frameworks', ['OpenGL', 'SDL', 'Tiled']],
-    ['Tools', ['Visual Studio', 'Git', 'GitHub']],
-    ['Design', ['Level Design']]
-  ];
   function skillTile(s) {
     var d = el('div', 'skill'), box = el('span', 'ico'), ico;
     if (s.d) {
@@ -167,23 +160,14 @@
     box.appendChild(ico); d.appendChild(box); d.appendChild(el('span', '', esc(s.n)));
     return d;
   }
-  var skillGrid = $('#skillGrid');
-  CATS.forEach(function (cat, k) {
-    var card = el('div', 'scat reveal'); card.style.setProperty('--d', k % 3);
-    card.appendChild(el('h3', '', esc(cat[0])));
-    var chips = el('div', 'chips');
-    cat[1].forEach(function (name) {
-      var s = SKILLS.filter(function (x) { return x.n === name; })[0];
-      if (s) chips.appendChild(skillTile(s));
-    });
-    card.appendChild(chips); skillGrid.appendChild(card);
-  });
+  var track = $('#skillTrack');
+  SKILLS.concat(SKILLS).forEach(function (s) { track.appendChild(skillTile(s)); });
 
   /* ---------- PROJECT CARDS + WINDOWS ---------- */
   var grid = $('#projGrid');
   PROJECTS.forEach(function (p, idx) {
     // card
-    var c = el('article', 'proj reveal'); c.id = p.slug; c.style.setProperty('--d', idx % 3);
+    var c = el('article', 'proj reveal'); c.id = p.slug; c.setAttribute('data-cursor', 'View'); c.style.setProperty('--d', idx % 3);
     var cover = el('div', 'cover');
     cover.appendChild(tryImg(p.cover[0], p.title, function (im) { im.remove(); }));
     cover.appendChild(el('span', 'badge', p.type || 'GAME'));
@@ -253,7 +237,7 @@
       tail.appendChild(el('h3', '', 'Screenshots'));
       var shots = el('div', 'shots');
       p.gallery.forEach(function (cands, k) {
-        var b = el('button', 'shot'); b.type = 'button'; b.setAttribute('aria-label', 'Open screenshot ' + (k + 1));
+        var b = el('button', 'shot'); b.type = 'button'; b.setAttribute('data-cursor', 'Zoom'); b.setAttribute('aria-label', 'Open screenshot ' + (k + 1));
         var im = tryImg(cands, p.title + ' screenshot ' + (k + 1), function () { b.remove(); });
         b.appendChild(im); shots.appendChild(b);
       });
@@ -295,7 +279,7 @@
   /* ---------- PROJECT WINDOWS ---------- */
   function openM(slug) {
     var d = document.getElementById('m-' + slug); if (!d || d.open) return;
-    d.showModal(); document.body.classList.add('lock');
+    d.showModal(); raiseCursor(); document.body.classList.add('lock');
     $$('iframe[data-src]', d).forEach(function (f) { f.src = f.dataset.src; });
     history.replaceState(null, '', '#' + slug);
   }
@@ -322,7 +306,7 @@
     var im = list[cur]; lbImg.src = im.currentSrc || im.src; lbImg.alt = im.alt;
     lbCount.textContent = (cur + 1) + ' / ' + list.length;
   }
-  function openLB(imgs, i) { list = imgs; cur = Math.max(0, i); showLB(); lb.showModal(); }
+  function openLB(imgs, i) { list = imgs; cur = Math.max(0, i); showLB(); lb.showModal(); raiseCursor(); }
   function step(n) { cur = (cur + n + list.length) % list.length; showLB(); }
   $('.prev', lb).addEventListener('click', function () { step(-1); });
   $('.next', lb).addEventListener('click', function () { step(1); });
@@ -331,6 +315,57 @@
     if (e.key === 'ArrowLeft') step(-1);
     else if (e.key === 'ArrowRight') step(1);
   });
+
+  /* ---------- CUSTOM CURSOR ---------- */
+  var curDot, curRing;
+  // keeps the cursor above open dialogs (they live in the browser's top layer)
+  function raiseCursor() {
+    [curRing, curDot].forEach(function (n) {
+      if (n && n.showPopover) { try { n.hidePopover(); n.showPopover(); } catch (e) {} }
+    });
+  }
+  if (!reduce && matchMedia('(hover: hover) and (pointer: fine)').matches) (function () {
+    curDot = el('div', 'cur-dot'); curRing = el('div', 'cur-ring');
+    var curLabel = el('span'); curRing.appendChild(curLabel);
+    [curDot, curRing].forEach(function (n) {
+      n.setAttribute('aria-hidden', 'true'); n.setAttribute('popover', 'manual'); document.body.appendChild(n);
+    });
+    raiseCursor();
+
+    var x = -100, y = -100, rx = -100, ry = -100, seen = false;
+    function vis(v) { curDot.classList.toggle('on', v); curRing.classList.toggle('on', v); }
+    function put(n, px, py) { n.style.transform = 'translate3d(' + px + 'px,' + py + 'px,0) translate(-50%,-50%)'; }
+
+    document.addEventListener('pointermove', function (e) {
+      x = e.clientX; y = e.clientY;
+      if (!seen) { seen = true; rx = x; ry = y; vis(true); }
+      put(curDot, x, y);
+    }, { passive: true });
+
+    document.addEventListener('pointerover', function (e) {
+      var t = e.target; if (!t || !t.closest) return;
+      var onFrame = t.tagName === 'IFRAME';
+      var lab = t.closest('[data-cursor]');
+      var lnk = t.closest('a,button,summary,[role="button"]');
+      curRing.classList.toggle('label', !!lab && !onFrame);
+      curRing.classList.toggle('link', !lab && !!lnk);
+      curDot.classList.toggle('hide', !!lab || onFrame);
+      curRing.classList.toggle('off', onFrame);
+      if (lab) curLabel.textContent = lab.getAttribute('data-cursor');
+    });
+    document.addEventListener('pointerdown', function () { curRing.classList.add('down'); });
+    document.addEventListener('pointerup', function () { curRing.classList.remove('down'); });
+    document.documentElement.addEventListener('mouseleave', function () { vis(false); });
+    document.documentElement.addEventListener('mouseenter', function () { if (seen) vis(true); });
+
+    (function loop() {
+      rx += (x - rx) * 0.18; ry += (y - ry) * 0.18;
+      put(curRing, rx, ry);
+      requestAnimationFrame(loop);
+    })();
+
+    document.documentElement.classList.add('has-cursor');
+  })();
 
   /* ---------- THEME TOGGLE ---------- */
   var root = document.documentElement, tbtn = $('#themeBtn');
