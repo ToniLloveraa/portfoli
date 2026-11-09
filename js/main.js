@@ -37,11 +37,15 @@
     { n: 'Unity', d: 'unity/unity-original.svg', m: 'Un' },
     { n: 'Unreal Engine', d: 'unrealengine/unrealengine-original.svg', m: 'UE' },
     { n: 'Visual Studio', d: 'visualstudio/visualstudio-plain.svg', m: 'VS' },
+    { n: 'Visual Studio Code', d: 'vscode/vscode-original.svg', m: 'VSC' },
     { n: 'Git', d: 'git/git-original.svg', m: 'Gi' },
     { n: 'GitHub', d: 'github/github-original.svg', m: 'GH' },
     { n: 'OpenGL', d: 'opengl/opengl-original.svg', m: 'GL' },
-    { n: 'SDL', m: 'SDL' },
-    { n: 'Tiled', m: 'Til' }
+    { n: 'SDL', d: 'sdl/sdl-original.svg', l: 'sdl.svg', m: 'SDL' },
+    { n: 'Tiled', l: 'tiled.svg', m: 'Til' },
+    { n: 'Maya', d: 'maya/maya-original.svg', m: 'Ma' },
+    { n: 'Substance Painter', l: 'substance-painter.svg', m: 'Pa' },
+    { n: 'Photoshop', d: 'photoshop/photoshop-plain.svg', m: 'Ps' }
   ];
 
   var ME = 'Toni Llovera Roca';
@@ -168,9 +172,15 @@
   /* ---------- SKILLS ---------- */
   function skillTile(s) {
     var d = el('div', 'skill'), box = el('span', 'ico'), ico;
-    if (s.d) {
-      ico = new Image(); ico.alt = ''; ico.loading = 'lazy'; ico.src = DEV + s.d;
-      ico.onerror = function () { ico.replaceWith(el('i', 'mono', s.m)); };
+    if (s.d || s.l) {
+      // a file in images/skills/ wins; otherwise devicon; otherwise initials
+      var srcs = [];
+      if (s.l) srcs.push('./images/skills/' + s.l);
+      if (s.d) srcs.push(DEV + s.d);
+      var k = 0;
+      ico = new Image(); ico.alt = ''; ico.loading = 'lazy';
+      ico.onerror = function () { k++; if (k < srcs.length) ico.src = srcs[k]; else ico.replaceWith(el('i', 'mono', s.m)); };
+      ico.src = srcs[0];
     } else if (s.fa) { ico = el('i', 'fas ' + s.fa); }
     else { ico = el('i', 'mono', s.m); }
     box.appendChild(ico); d.appendChild(box); d.appendChild(el('span', '', esc(s.n)));
@@ -184,7 +194,7 @@
     var box = el('div', 'showcase');
     box.appendChild(el('h3', '', 'Showcase'));
     var stage = el('button', 'stage'); stage.type = 'button';
-    stage.setAttribute('data-cursor', 'Zoom'); stage.setAttribute('aria-label', 'Open image full screen');
+    stage.setAttribute('aria-label', 'Open image full screen');
     var big = new Image(); big.alt = ''; big.decoding = 'async'; stage.appendChild(big);
     var thumbs = el('div', 'thumbs');
     var foot = el('div', 'sc-foot');
