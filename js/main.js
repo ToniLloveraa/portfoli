@@ -34,6 +34,7 @@
   var SKILLS = [
     { n: 'C++', d: 'cplusplus/cplusplus-original.svg', m: 'C+' },
     { n: 'C#', d: 'csharp/csharp-original.svg', m: 'C#' },
+    { n: 'HTML', d: 'html5/html5-original.svg', m: 'HT' },
     { n: 'Unity', d: 'unity/unity-original.svg', m: 'Un' },
     { n: 'Unreal Engine', d: 'unrealengine/unrealengine-original.svg', m: 'UE' },
     { n: 'Visual Studio', d: 'visualstudio/visualstudio-plain.svg', m: 'VS' },
