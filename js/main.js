@@ -100,18 +100,6 @@
       link: 'https://nobody-games-studio.itch.io/son-of-ithaca'
     },
     {
-      slug: 'dune-engine', title: 'Dune Engine', type: 'ENGINE',
-      cover: [[IMG + 'dune-engine.jpg']],
-      card: 'Game engine built from scratch using SDL3 and OpenGL.',
-      tags: ['C++', 'OpenGL', 'SDL3'],
-      facts: [['fa-calendar', 'Nov 2025'], ['fa-wrench', 'C++ · SDL3 · OpenGL']],
-      about: 'Dune Engine is a game engine developed in C++ with SDL3 and OpenGL, focused on learning engine architecture and efficient rendering.',
-      features: ['Modern OpenGL rendering system', 'Dynamic resource loading', 'Basic level editor'],
-      workTitle: 'My work',
-      work: 'In this project I worked mainly on resource management and the entity system.',
-      gallery: range(3, [function (i) { return 'dune-engine-' + i + '.jpg'; }])
-    },
-    {
       slug: 'granotago', title: 'GranotaGo',
       cover: [[IMG + 'granotago.png']],
       card: "Game made for 3Cat's Premis Ludi. Guide an adventurous frog in a 2D experience.",
@@ -136,19 +124,6 @@
       work: "My main role was programming the logic for menus, transitions, levels, saving and loading, and UI. I also helped integrate art assets, programmed enemy AI and optimized the base engine's performance.",
       gallery: range(4, [function (i) { return 'the-apprentice-' + i + '.jpg'; }]),
       link: 'https://oalonsoo.itch.io/the-apprentice'
-    },
-    {
-      slug: 'need-for-beer', title: 'Need For Beer',
-      cover: [[IMG + 'need-for-beer.png']],
-      card: 'Physics-based racing game, developed as a team learning project.',
-      tags: ['C++', 'Physics', 'Racing game'],
-      facts: [['fa-calendar', 'Nov 2024'], ['fa-wrench', 'C++'], ['fa-gamepad', '1–2 players']],
-      about: 'Need For Beer is a 1 or 2 player racing game with an emphasis on the physical simulation of vehicle movement. It was developed collaboratively in a GitHub repository with classmates, as part of a study of physics mechanics applied to video games.',
-      features: ['Vehicle physics simulation (forces, friction, collisions)', 'Dynamic circuits and crash-and-bounce mechanics', 'Custom keyboard controls, turbo system and advanced braking'],
-      workTitle: 'My work',
-      work: 'In this project, my main role was designing and implementing the lap systems, as well as integrating the turbo system, all the UI and the main art. I also helped structure the GitHub repository and optimize for stable performance.',
-      gallery: range(4, [function (i) { return 'needForBeer' + i + '.png'; }]),
-      link: 'https://tonillovera.itch.io/needforbeer'
     }
   ];
 
