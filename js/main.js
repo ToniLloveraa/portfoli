@@ -69,7 +69,7 @@
     {
       slug: 'odossea', title: 'Odossea',
       cover: [[IMG + 'odossea.png']],
-      award: ['Socialpoint Best Technology Award', '9th Gran CITM Game Jam', ['socialpoint', 'gamejam']],
+      award: ['Socialpoint Best Technology Award', '9th Gran CITM Game Jam', ['gamejam', 'socialpoint']],
       card: 'Co-op game for 2 players: throw and share mass to solve puzzles and clear platforms together.',
       tags: ['Platformer', 'Puzzle', 'Co-op', 'Game Jam'],
       facts: [['fa-calendar', 'Feb 2026'], ['fa-bolt', 'Game jam'], ['fa-gamepad', '2 players']],
@@ -250,8 +250,10 @@
     var body = el('div', 'pbody');
     body.appendChild(el('h3', '', esc(p.title)));
     if (p.award) {
-      var aw = el('div', 'award', '<i class="fas fa-trophy"></i><div><strong>' + esc(p.award[0]) + '</strong><span>' + esc(p.award[1]) + '</span></div>');
+      var aw = el('div', 'award');
       if (p.award[2]) aw.appendChild(logoEls(p.award[2], 'logos'));
+      else aw.appendChild(el('i', 'fas fa-trophy', ''));
+      aw.appendChild(el('div', '', '<strong>' + esc(p.award[0]) + '</strong><span>' + esc(p.award[1]) + '</span>'));
       body.appendChild(aw);
     }
     body.appendChild(el('p', 'pcard', esc(p.card)));
@@ -270,8 +272,10 @@
 
     var head = el('div', '', '<h2>' + esc(p.title) + '</h2>');
     if (p.award) {
-      var ban = el('div', 'banner', '<i class="fas fa-trophy"></i><div class="btxt"><strong>' + esc(p.award[0]) + '</strong><span>' + esc(p.award[1]) + '</span></div>');
+      var ban = el('div', 'banner');
       if (p.award[2]) ban.appendChild(logoEls(p.award[2], 'logos big'));
+      else ban.appendChild(el('i', 'fas fa-trophy', ''));
+      ban.appendChild(el('div', 'btxt', '<strong>' + esc(p.award[0]) + '</strong><span>' + esc(p.award[1]) + '</span>'));
       head.appendChild(ban);
     }
     blk(head);
