@@ -250,6 +250,23 @@
     body.appendChild(btn);
     c.appendChild(cover); c.appendChild(body); grid.appendChild(c);
 
+    // hover preview: the project's video plays muted inside the cover, only while the pointer is over the card
+    if (p.video && !reduce && matchMedia('(hover: hover) and (pointer: fine)').matches) (function () {
+      var vid = p.video.split('/').pop(), pv = null, timer = null;
+      function stop() { clearTimeout(timer); if (pv) { pv.remove(); pv = null; } }
+      c.addEventListener('mouseenter', function () {
+        timer = setTimeout(function () {
+          pv = document.createElement('iframe');
+          pv.className = 'preview'; pv.title = ''; pv.tabIndex = -1; pv.setAttribute('aria-hidden', 'true');
+          pv.setAttribute('allow', 'autoplay; encrypted-media');
+          pv.src = p.video + '?autoplay=1&mute=1&controls=0&loop=1&playlist=' + vid + '&playsinline=1&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3&fs=0';
+          pv.addEventListener('load', function () { if (pv) pv.classList.add('on'); });
+          cover.insertBefore(pv, cover.querySelector('.badge'));
+        }, 200);
+      });
+      c.addEventListener('mouseleave', stop);
+    })();
+
     // window
     var d = el('dialog', 'modal'); d.id = 'm-' + p.slug; d.setAttribute('aria-label', p.title);
     var x = el('button', 'x', '&times;'); x.type = 'button'; x.setAttribute('aria-label', 'Close'); x.setAttribute('data-close', '');
