@@ -41,8 +41,7 @@
     { n: 'GitHub', d: 'github/github-original.svg', m: 'GH' },
     { n: 'OpenGL', d: 'opengl/opengl-original.svg', m: 'GL' },
     { n: 'SDL', m: 'SDL' },
-    { n: 'Tiled', m: 'Til' },
-    { n: 'Level Design', fa: 'fa-map' }
+    { n: 'Tiled', m: 'Til' }
   ];
 
   var ME = 'Toni Llovera Roca';
@@ -177,8 +176,21 @@
     box.appendChild(ico); d.appendChild(box); d.appendChild(el('span', '', esc(s.n)));
     return d;
   }
+  var SKILL_GROUPS = [
+    ['Languages', 'fa-code', ['C++', 'C#']],
+    ['Engines & graphics', 'fa-cube', ['Unity', 'Unreal Engine', 'OpenGL', 'SDL', 'Tiled']],
+    ['Tools', 'fa-screwdriver-wrench', ['Visual Studio', 'Git', 'GitHub']]
+  ];
   var track = $('#skillTrack');
-  SKILLS.concat(SKILLS).forEach(function (s) { track.appendChild(skillTile(s)); });
+  SKILL_GROUPS.forEach(function (g, gi) {
+    var card = el('div', 'sgroup reveal'); card.style.setProperty('--d', gi);
+    card.appendChild(el('h3', '', '<i class="fas ' + g[1] + '"></i>' + esc(g[0])));
+    var list = el('div', 'schips');
+    g[2].forEach(function (name) {
+      SKILLS.forEach(function (s) { if (s.n === name) list.appendChild(skillTile(s)); });
+    });
+    card.appendChild(list); track.appendChild(card);
+  });
 
   /* ---------- SHOWCASE (project images) ---------- */
   function showcase(p) {
