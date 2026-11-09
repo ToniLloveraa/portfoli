@@ -12,6 +12,22 @@
     for (var i = 1; i <= n; i++) out.push(fns.map(function (f) { return IMG + f(i); }));
     return out;
   }
+  // Logos: put the files in images/logos/ (png, svg, webp or jpg all work)
+  var LOGO = './images/logos/';
+  var LG = {
+    socialpoint: ['Socialpoint', ['socialpoint.png', 'socialpoint.svg', 'socialpoint.webp', 'socialpoint.jpg']],
+    gamejam: ['9th Gran CITM Game Jam', ['gran-citm-gamejam.png', 'gran-citm-gamejam.svg', 'gran-citm-gamejam.webp', 'gran-citm-gamejam.jpg']]
+  };
+  function logoEls(keys, cls) {
+    var wrap = el('span', cls || 'logos');
+    (keys || []).forEach(function (k) {
+      var l = LG[k]; if (!l) return;
+      var chip = el('span', 'logo');
+      chip.appendChild(tryImg(l[1].map(function (f) { return LOGO + f; }), l[0], function () { chip.remove(); }));
+      wrap.appendChild(chip);
+    });
+    return wrap;
+  }
   var yt = function (id) { return 'https://www.youtube.com/embed/' + id; };
 
   var SKILLS = [
@@ -53,7 +69,7 @@
     {
       slug: 'odossea', title: 'Odossea',
       cover: [[IMG + 'odossea.png']],
-      award: ['Socialpoint Best Technology Award', '9th Gran CITM Game Jam'],
+      award: ['Socialpoint Best Technology Award', '9th Gran CITM Game Jam', ['socialpoint', 'gamejam']],
       card: 'Co-op game for 2 players: throw and share mass to solve puzzles and clear platforms together.',
       tags: ['Platformer', 'Puzzle', 'Co-op', 'Game Jam'],
       facts: [['fa-calendar', 'Feb 2026'], ['fa-bolt', 'Game jam'], ['fa-gamepad', '2 players']],
@@ -173,7 +189,11 @@
     cover.appendChild(el('span', 'badge', p.type || 'GAME'));
     var body = el('div', 'pbody');
     body.appendChild(el('h3', '', esc(p.title)));
-    if (p.award) body.appendChild(el('div', 'award', '<i class="fas fa-trophy"></i><div><strong>' + esc(p.award[0]) + '</strong><span>' + esc(p.award[1]) + '</span></div>'));
+    if (p.award) {
+      var aw = el('div', 'award', '<i class="fas fa-trophy"></i><div><strong>' + esc(p.award[0]) + '</strong><span>' + esc(p.award[1]) + '</span></div>');
+      if (p.award[2]) aw.appendChild(logoEls(p.award[2], 'logos'));
+      body.appendChild(aw);
+    }
     body.appendChild(el('p', 'pcard', esc(p.card)));
     body.appendChild(el('div', 'tags', p.tags.map(function (t) { return '<span class="tag">' + esc(t) + '</span>'; }).join('')));
     var btn = el('button', 'open', 'View project <i class="fas fa-arrow-right"></i>');
@@ -189,7 +209,11 @@
     function blk(node) { node.classList.add('blk'); node.style.setProperty('--i', n++); sc.appendChild(node); return node; }
 
     var head = el('div', '', '<h2>' + esc(p.title) + '</h2>');
-    if (p.award) head.appendChild(el('div', 'pill', '<i class="fas fa-trophy"></i> ' + esc(p.award[0]) + ' – ' + esc(p.award[1])));
+    if (p.award) {
+      var ban = el('div', 'banner', '<i class="fas fa-trophy"></i><div class="btxt"><strong>' + esc(p.award[0]) + '</strong><span>' + esc(p.award[1]) + '</span></div>');
+      if (p.award[2]) ban.appendChild(logoEls(p.award[2], 'logos big'));
+      head.appendChild(ban);
+    }
     blk(head);
 
     var media = el('div', 'media');

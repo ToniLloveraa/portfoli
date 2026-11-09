@@ -115,6 +115,20 @@ section{margin-bottom:6rem}
 .award i{color:var(--gold);font-size:1.15rem}
 .award strong{display:block;font-size:.88rem;color:var(--ink)}
 .award span{color:var(--muted);font-size:.8rem}
+.award>div{flex:1;min-width:0}
+.logos{display:flex;gap:.5rem;align-items:center;flex:none}
+.award{flex-wrap:wrap}
+.award>.logos{flex-basis:100%;padding-top:.2rem}
+.logo{display:grid;place-items:center;height:34px;padding:0 .55rem;border-radius:8px;background:#fff}
+.logo img{height:22px;width:auto;max-width:90px;object-fit:contain}
+.logos.big{margin-left:auto}
+.logos.big .logo{height:54px;padding:0 .9rem;border-radius:12px}
+.logos.big .logo img{height:36px;max-width:150px}
+.banner{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;padding:.9rem 1.2rem;margin-bottom:1rem;border-radius:16px;background:var(--gold-soft);border:1px solid var(--gold-line)}
+.banner>i{color:var(--gold);font-size:1.7rem}
+.banner .btxt{flex:1;min-width:200px}
+.banner strong{display:block;font:700 1.1rem var(--display);color:var(--ink)}
+.banner span.sub,.banner .btxt span{color:var(--muted);font-size:.92rem}
 .pcard{color:var(--muted);font-size:.95rem;margin-bottom:.9rem;flex:1}
 .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem}
 .tag{font-size:.78rem;font-weight:500;padding:.14rem .7rem;border-radius:999px;background:var(--card2);border:1px solid var(--line);color:var(--muted);
@@ -130,7 +144,7 @@ section{margin-bottom:6rem}
 @keyframes nudge{50%{transform:translateX(6px)}}
 
 /* project window */
-.modal{border:1px solid var(--line);border-radius:24px;padding:0;margin:auto;width:min(1180px,95vw);max-height:92vh;background:var(--bg);color:var(--ink);overflow:hidden;box-shadow:0 40px 90px -20px rgba(0,0,0,.7)}
+.modal{border:1px solid var(--line);border-radius:24px;padding:0;margin:auto;width:min(1320px,96vw);max-height:92vh;background:var(--bg);color:var(--ink);overflow:hidden;box-shadow:0 40px 90px -20px rgba(0,0,0,.7)}
 .modal[open]{animation:pop .4s cubic-bezier(.2,.9,.3,1.1)}
 .modal::backdrop{background:rgba(4,6,12,.78);animation:fade .3s}
 @keyframes pop{from{opacity:0;transform:translateY(30px) scale(.96)}}
@@ -146,7 +160,7 @@ section{margin-bottom:6rem}
 .pill{display:inline-flex;gap:.55rem;align-items:center;padding:.4rem .9rem;border-radius:10px;background:var(--gold-soft);border:1px solid var(--gold-line);color:var(--gold);font-weight:600;font-size:.88rem;margin-bottom:.8rem}
 .media{border-radius:18px;overflow:hidden;background:#000;margin-bottom:1rem;border:1px solid var(--line)}
 .media iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
-.media img{width:100%;max-height:520px;object-fit:cover}
+.media img{width:100%;max-height:640px;object-fit:cover}
 .facts{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.8rem}
 .facts span{display:inline-flex;align-items:center;gap:.55rem;padding:.5rem .95rem;border-radius:10px;background:var(--card);border:1px solid var(--line);font-weight:600;font-size:.9rem}
 .facts i{color:var(--accent)}
@@ -172,9 +186,9 @@ section{margin-bottom:6rem}
 .member a:hover{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 
 /* screenshots */
-.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.8rem;margin-top:.4rem}
-.shot{position:relative;aspect-ratio:16/10;border:1px solid var(--line);padding:0;border-radius:12px;overflow:hidden;cursor:zoom-in;background:var(--card2);transition:transform .25s,border-color .25s}
-.shot:hover{transform:scale(1.04);border-color:var(--accent)}
+.shots{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:.6rem}
+.shot{position:relative;aspect-ratio:16/9;border:1px solid var(--line);padding:0;border-radius:12px;overflow:hidden;cursor:zoom-in;background:var(--card2);transition:transform .25s,border-color .25s}
+.shot:hover{transform:scale(1.02);border-color:var(--accent)}
 .shot img{width:100%;height:100%;object-fit:cover}
 .shot::after{content:"\f00e";font:900 1.2rem "Font Awesome 6 Free";position:absolute;inset:0;display:grid;place-items:center;color:#fff;background:rgba(6,10,20,.6);opacity:0;transition:opacity .2s}
 .shot:hover::after{opacity:1}
@@ -236,3 +250,5 @@ html.has-cursor,html.has-cursor *{cursor:none!important}
   .js .reveal,.js .sec-title,.js .hero .rise,.js .stats{opacity:1;transform:none}
   .modal[open] .blk{opacity:1}.proj:hover{transform:none}
 }
+
+@media(max-width:620px){.shots{grid-template-columns:1fr}.logos.big{margin-left:0}}
