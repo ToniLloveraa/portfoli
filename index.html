@@ -13,7 +13,7 @@
 document.documentElement.classList.add("js");
 try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
 </script>
-<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/style.css?v=20261109">
 </head>
 <body>
 <div class="progress"></div>
@@ -60,10 +60,10 @@ try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") 
   </section>
 
   <div class="stats" style="--i:6">
-    <div class="stat"><b>4th</b><span>year at CITM</span></div>
-    <div class="stat"><b id="statProjects">7</b><span>projects</span></div>
-    <div class="stat"><b>1</b><span>award won</span></div>
-    <div class="stat"><b>1</b><span>nomination</span></div>
+    <div class="stat"><i class="fas fa-graduation-cap"></i><div><b>4th</b><span>year at CITM</span></div></div>
+    <div class="stat"><i class="fas fa-gamepad"></i><div><b id="statProjects">7</b><span>projects</span></div></div>
+    <div class="stat"><i class="fas fa-trophy"></i><div><b>1</b><span>award won</span></div></div>
+    <div class="stat"><i class="fas fa-star"></i><div><b>1</b><span>nomination</span></div></div>
   </div>
 
   <section id="skills">
@@ -105,6 +105,6 @@ try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") 
   <span class="count" id="lbCount"></span>
 </dialog>
 
-<script src="./js/main.js"></script>
+<script src="./js/main.js?v=20261109"></script>
 </body>
 </html>
