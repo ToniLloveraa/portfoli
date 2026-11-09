@@ -314,6 +314,10 @@
         var row = el('div', 'member' + (m[3] ? ' me' : ''));
         row.innerHTML = '<span class="avatar">' + esc(initials(m[0])) + '</span><div><strong>' + esc(m[0]) + '</strong><small>' + esc(m[1]) + '</small></div>' +
           '<a href="' + esc(m[2]) + '" target="_blank" rel="noopener" aria-label="' + esc(m[0]) + ' on GitHub"><i class="fab fa-github"></i></a>';
+        var av = row.querySelector('.avatar'), gh = m[2].replace(/\/+$/, '').split('/').pop();
+        var pics = ['https://github.com/' + encodeURIComponent(gh) + '.png?size=96'];
+        if (m[3]) pics.unshift('./images/toni.jpg');
+        av.appendChild(tryImg(pics, m[0], function (im) { im.remove(); })); // if none loads, the initials stay
         tm.appendChild(row);
       });
       right.appendChild(tm); cols.appendChild(right);
@@ -458,21 +462,6 @@
 
     document.documentElement.classList.add('has-cursor');
   })();
-
-  /* ---------- THEME TOGGLE ---------- */
-  var root = document.documentElement, tbtn = $('#themeBtn');
-  function paintTheme() {
-    var dark = root.getAttribute('data-theme') !== 'light';
-    tbtn.innerHTML = '<i class="fas ' + (dark ? 'fa-sun' : 'fa-moon') + '"></i>';
-    var m = $('meta[name="theme-color"]'); if (m) m.setAttribute('content', dark ? '#0b0e14' : '#f7f8fa');
-  }
-  tbtn.addEventListener('click', function () {
-    var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch (e) {}
-    paintTheme();
-  });
-  paintTheme();
 
   /* ---------- ACTIVE NAV LINK ---------- */
   var links = $$('.top nav a'), secs = links.map(function (a) { return $(a.getAttribute('href')); });
