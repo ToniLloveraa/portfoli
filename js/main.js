@@ -66,7 +66,7 @@
         ['Marc Blanquez Padilla', 'Programmer, 3D artist and level designer', 'https://github.com/MarcBlanquezPadilla'],
         ['Martí Mira Vázquez', 'Level designer, UI artist and 3D artist', 'https://github.com/algars15'],
         ['Oscar Alonso Camenforte', 'Programmer, sound programmer and level designer', 'https://github.com/oscaralonsoo'],
-        [ME, 'Programmer, UI programmer and technical artist', 'https://github.com/ToniLlovera', true]
+        [ME, 'Programmer, UI programmer and technical artist', 'https://github.com/ToniLloveraa', true]
       ],
       gallery: range(6, [function (i) { return 'estik-' + i + '.png'; }, function (i) { return 'Estik' + i + '.png'; }]),
       link: 'https://oalonsoo.itch.io/estik'
