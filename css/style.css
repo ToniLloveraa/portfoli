@@ -277,5 +277,5 @@ html.has-cursor,html.has-cursor *{cursor:none!important}
 .modal .team li,.modal .facts,.modal .facts span{text-align:left;hyphens:manual}
 
 /* hover video preview inside project cards */
-.cover iframe.preview{position:absolute;top:50%;left:50%;width:max(100%,calc(230px*16/9));aspect-ratio:16/9;height:auto;transform:translate(-50%,-50%);border:0;pointer-events:none;opacity:0;transition:opacity .4s}
+.cover iframe.preview{position:absolute;top:50%;left:50%;width:max(100%,calc(230px*16/9));aspect-ratio:16/9;height:auto;transform:translate(-50%,-50%);border:0;pointer-events:none;opacity:0;transition:opacity .25s}
 .cover iframe.preview.on{opacity:1}
